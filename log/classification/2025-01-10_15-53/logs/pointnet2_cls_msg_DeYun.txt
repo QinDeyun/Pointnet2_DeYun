@@ -1,0 +1,864 @@
+2025-01-10 15:53:38,337 - Model - INFO - PARAMETER ...
+2025-01-10 15:53:38,337 - Model - INFO - Namespace(batch_size=16, decay_rate=0.0001, epoch=200, gpu='0', learning_rate=0.002, log_dir=None, model='pointnet2_cls_msg_DeYun', normal=False, num_point=1024, optimizer='Adam')
+2025-01-10 15:53:40,046 - Model - INFO - Load dataset ...
+2025-01-10 15:53:41,391 - Model - INFO - No existing model, starting training from scratch...
+2025-01-10 15:53:41,391 - Model - INFO - Start training...
+2025-01-10 15:53:41,391 - Model - INFO - Epoch 1 (1/200):
+2025-01-10 15:53:44,586 - Model - INFO - Train Instance Accuracy: 302.660843
+2025-01-10 15:53:45,408 - Model - INFO - Test Mean Distance: 361.060689
+2025-01-10 15:53:45,408 - Model - INFO - Best Mean Distance: 361.060689
+2025-01-10 15:53:45,408 - Model - INFO - Save model...
+2025-01-10 15:53:45,408 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:53:45,435 - Model - INFO - Epoch 2 (2/200):
+2025-01-10 15:53:48,254 - Model - INFO - Train Instance Accuracy: 262.732182
+2025-01-10 15:53:49,050 - Model - INFO - Test Mean Distance: 376.429616
+2025-01-10 15:53:49,050 - Model - INFO - Best Mean Distance: 361.060689
+2025-01-10 15:53:49,050 - Model - INFO - Epoch 3 (3/200):
+2025-01-10 15:53:51,857 - Model - INFO - Train Instance Accuracy: 231.770288
+2025-01-10 15:53:52,639 - Model - INFO - Test Mean Distance: 354.236969
+2025-01-10 15:53:52,639 - Model - INFO - Best Mean Distance: 354.236969
+2025-01-10 15:53:52,639 - Model - INFO - Save model...
+2025-01-10 15:53:52,639 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:53:52,672 - Model - INFO - Epoch 4 (4/200):
+2025-01-10 15:53:55,526 - Model - INFO - Train Instance Accuracy: 202.248739
+2025-01-10 15:53:56,368 - Model - INFO - Test Mean Distance: 313.163228
+2025-01-10 15:53:56,368 - Model - INFO - Best Mean Distance: 313.163228
+2025-01-10 15:53:56,368 - Model - INFO - Save model...
+2025-01-10 15:53:56,368 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:53:56,401 - Model - INFO - Epoch 5 (5/200):
+2025-01-10 15:53:59,238 - Model - INFO - Train Instance Accuracy: 178.277834
+2025-01-10 15:54:00,090 - Model - INFO - Test Mean Distance: 234.840647
+2025-01-10 15:54:00,090 - Model - INFO - Best Mean Distance: 234.840647
+2025-01-10 15:54:00,090 - Model - INFO - Save model...
+2025-01-10 15:54:00,091 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:54:00,123 - Model - INFO - Epoch 6 (6/200):
+2025-01-10 15:54:02,908 - Model - INFO - Train Instance Accuracy: 148.953769
+2025-01-10 15:54:03,762 - Model - INFO - Test Mean Distance: 132.820063
+2025-01-10 15:54:03,762 - Model - INFO - Best Mean Distance: 132.820063
+2025-01-10 15:54:03,762 - Model - INFO - Save model...
+2025-01-10 15:54:03,762 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:54:03,795 - Model - INFO - Epoch 7 (7/200):
+2025-01-10 15:54:06,590 - Model - INFO - Train Instance Accuracy: 134.882806
+2025-01-10 15:54:07,387 - Model - INFO - Test Mean Distance: 101.559469
+2025-01-10 15:54:07,387 - Model - INFO - Best Mean Distance: 101.559469
+2025-01-10 15:54:07,387 - Model - INFO - Save model...
+2025-01-10 15:54:07,387 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:54:07,420 - Model - INFO - Epoch 8 (8/200):
+2025-01-10 15:54:10,178 - Model - INFO - Train Instance Accuracy: 115.542113
+2025-01-10 15:54:10,981 - Model - INFO - Test Mean Distance: 137.703649
+2025-01-10 15:54:10,981 - Model - INFO - Best Mean Distance: 101.559469
+2025-01-10 15:54:10,982 - Model - INFO - Epoch 9 (9/200):
+2025-01-10 15:54:13,792 - Model - INFO - Train Instance Accuracy: 95.159786
+2025-01-10 15:54:14,612 - Model - INFO - Test Mean Distance: 107.801397
+2025-01-10 15:54:14,613 - Model - INFO - Best Mean Distance: 101.559469
+2025-01-10 15:54:14,613 - Model - INFO - Epoch 10 (10/200):
+2025-01-10 15:54:17,413 - Model - INFO - Train Instance Accuracy: 78.962938
+2025-01-10 15:54:18,233 - Model - INFO - Test Mean Distance: 132.787242
+2025-01-10 15:54:18,233 - Model - INFO - Best Mean Distance: 101.559469
+2025-01-10 15:54:18,234 - Model - INFO - Epoch 11 (11/200):
+2025-01-10 15:54:20,954 - Model - INFO - Train Instance Accuracy: 75.179731
+2025-01-10 15:54:21,787 - Model - INFO - Test Mean Distance: 128.865087
+2025-01-10 15:54:21,787 - Model - INFO - Best Mean Distance: 101.559469
+2025-01-10 15:54:21,787 - Model - INFO - Epoch 12 (12/200):
+2025-01-10 15:54:24,598 - Model - INFO - Train Instance Accuracy: 57.451899
+2025-01-10 15:54:25,406 - Model - INFO - Test Mean Distance: 105.805341
+2025-01-10 15:54:25,407 - Model - INFO - Best Mean Distance: 101.559469
+2025-01-10 15:54:25,407 - Model - INFO - Epoch 13 (13/200):
+2025-01-10 15:54:28,186 - Model - INFO - Train Instance Accuracy: 59.185535
+2025-01-10 15:54:28,988 - Model - INFO - Test Mean Distance: 63.798272
+2025-01-10 15:54:28,988 - Model - INFO - Best Mean Distance: 63.798272
+2025-01-10 15:54:28,988 - Model - INFO - Save model...
+2025-01-10 15:54:28,988 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:54:29,022 - Model - INFO - Epoch 14 (14/200):
+2025-01-10 15:54:31,805 - Model - INFO - Train Instance Accuracy: 58.677100
+2025-01-10 15:54:32,620 - Model - INFO - Test Mean Distance: 80.600060
+2025-01-10 15:54:32,620 - Model - INFO - Best Mean Distance: 63.798272
+2025-01-10 15:54:32,620 - Model - INFO - Epoch 15 (15/200):
+2025-01-10 15:54:35,454 - Model - INFO - Train Instance Accuracy: 57.526862
+2025-01-10 15:54:36,274 - Model - INFO - Test Mean Distance: 79.082685
+2025-01-10 15:54:36,274 - Model - INFO - Best Mean Distance: 63.798272
+2025-01-10 15:54:36,275 - Model - INFO - Epoch 16 (16/200):
+2025-01-10 15:54:39,080 - Model - INFO - Train Instance Accuracy: 52.823056
+2025-01-10 15:54:39,897 - Model - INFO - Test Mean Distance: 75.687734
+2025-01-10 15:54:39,897 - Model - INFO - Best Mean Distance: 63.798272
+2025-01-10 15:54:39,897 - Model - INFO - Epoch 17 (17/200):
+2025-01-10 15:54:42,770 - Model - INFO - Train Instance Accuracy: 50.466791
+2025-01-10 15:54:43,594 - Model - INFO - Test Mean Distance: 92.124549
+2025-01-10 15:54:43,595 - Model - INFO - Best Mean Distance: 63.798272
+2025-01-10 15:54:43,595 - Model - INFO - Epoch 18 (18/200):
+2025-01-10 15:54:46,378 - Model - INFO - Train Instance Accuracy: 49.153577
+2025-01-10 15:54:47,190 - Model - INFO - Test Mean Distance: 65.212668
+2025-01-10 15:54:47,190 - Model - INFO - Best Mean Distance: 63.798272
+2025-01-10 15:54:47,190 - Model - INFO - Epoch 19 (19/200):
+2025-01-10 15:54:49,977 - Model - INFO - Train Instance Accuracy: 45.765130
+2025-01-10 15:54:50,764 - Model - INFO - Test Mean Distance: 63.531433
+2025-01-10 15:54:50,764 - Model - INFO - Best Mean Distance: 63.531433
+2025-01-10 15:54:50,764 - Model - INFO - Save model...
+2025-01-10 15:54:50,764 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:54:50,798 - Model - INFO - Epoch 20 (20/200):
+2025-01-10 15:54:53,556 - Model - INFO - Train Instance Accuracy: 44.522810
+2025-01-10 15:54:54,367 - Model - INFO - Test Mean Distance: 48.497490
+2025-01-10 15:54:54,367 - Model - INFO - Best Mean Distance: 48.497490
+2025-01-10 15:54:54,367 - Model - INFO - Save model...
+2025-01-10 15:54:54,367 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:54:54,400 - Model - INFO - Epoch 21 (21/200):
+2025-01-10 15:54:57,276 - Model - INFO - Train Instance Accuracy: 45.131643
+2025-01-10 15:54:58,135 - Model - INFO - Test Mean Distance: 42.768655
+2025-01-10 15:54:58,135 - Model - INFO - Best Mean Distance: 42.768655
+2025-01-10 15:54:58,136 - Model - INFO - Save model...
+2025-01-10 15:54:58,136 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:54:58,168 - Model - INFO - Epoch 22 (22/200):
+2025-01-10 15:55:00,975 - Model - INFO - Train Instance Accuracy: 38.416094
+2025-01-10 15:55:01,780 - Model - INFO - Test Mean Distance: 50.526602
+2025-01-10 15:55:01,780 - Model - INFO - Best Mean Distance: 42.768655
+2025-01-10 15:55:01,781 - Model - INFO - Epoch 23 (23/200):
+2025-01-10 15:55:04,577 - Model - INFO - Train Instance Accuracy: 36.660152
+2025-01-10 15:55:05,414 - Model - INFO - Test Mean Distance: 45.961848
+2025-01-10 15:55:05,415 - Model - INFO - Best Mean Distance: 42.768655
+2025-01-10 15:55:05,415 - Model - INFO - Epoch 24 (24/200):
+2025-01-10 15:55:08,218 - Model - INFO - Train Instance Accuracy: 35.952811
+2025-01-10 15:55:09,027 - Model - INFO - Test Mean Distance: 60.460796
+2025-01-10 15:55:09,027 - Model - INFO - Best Mean Distance: 42.768655
+2025-01-10 15:55:09,027 - Model - INFO - Epoch 25 (25/200):
+2025-01-10 15:55:11,784 - Model - INFO - Train Instance Accuracy: 38.994361
+2025-01-10 15:55:12,590 - Model - INFO - Test Mean Distance: 71.180247
+2025-01-10 15:55:12,590 - Model - INFO - Best Mean Distance: 42.768655
+2025-01-10 15:55:12,590 - Model - INFO - Epoch 26 (26/200):
+2025-01-10 15:55:15,381 - Model - INFO - Train Instance Accuracy: 41.944111
+2025-01-10 15:55:16,174 - Model - INFO - Test Mean Distance: 53.646395
+2025-01-10 15:55:16,175 - Model - INFO - Best Mean Distance: 42.768655
+2025-01-10 15:55:16,175 - Model - INFO - Epoch 27 (27/200):
+2025-01-10 15:55:18,995 - Model - INFO - Train Instance Accuracy: 47.535279
+2025-01-10 15:55:19,827 - Model - INFO - Test Mean Distance: 46.462332
+2025-01-10 15:55:19,827 - Model - INFO - Best Mean Distance: 42.768655
+2025-01-10 15:55:19,827 - Model - INFO - Epoch 28 (28/200):
+2025-01-10 15:55:22,580 - Model - INFO - Train Instance Accuracy: 34.987185
+2025-01-10 15:55:23,401 - Model - INFO - Test Mean Distance: 42.140694
+2025-01-10 15:55:23,401 - Model - INFO - Best Mean Distance: 42.140694
+2025-01-10 15:55:23,402 - Model - INFO - Save model...
+2025-01-10 15:55:23,402 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:55:23,434 - Model - INFO - Epoch 29 (29/200):
+2025-01-10 15:55:26,190 - Model - INFO - Train Instance Accuracy: 38.250274
+2025-01-10 15:55:27,027 - Model - INFO - Test Mean Distance: 41.529339
+2025-01-10 15:55:27,027 - Model - INFO - Best Mean Distance: 41.529339
+2025-01-10 15:55:27,027 - Model - INFO - Save model...
+2025-01-10 15:55:27,027 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:55:27,059 - Model - INFO - Epoch 30 (30/200):
+2025-01-10 15:55:29,863 - Model - INFO - Train Instance Accuracy: 35.206199
+2025-01-10 15:55:30,685 - Model - INFO - Test Mean Distance: 43.431367
+2025-01-10 15:55:30,685 - Model - INFO - Best Mean Distance: 41.529339
+2025-01-10 15:55:30,685 - Model - INFO - Epoch 31 (31/200):
+2025-01-10 15:55:33,536 - Model - INFO - Train Instance Accuracy: 35.554677
+2025-01-10 15:55:34,341 - Model - INFO - Test Mean Distance: 40.211522
+2025-01-10 15:55:34,341 - Model - INFO - Best Mean Distance: 40.211522
+2025-01-10 15:55:34,341 - Model - INFO - Save model...
+2025-01-10 15:55:34,341 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:55:34,374 - Model - INFO - Epoch 32 (32/200):
+2025-01-10 15:55:37,164 - Model - INFO - Train Instance Accuracy: 29.576240
+2025-01-10 15:55:37,946 - Model - INFO - Test Mean Distance: 41.008910
+2025-01-10 15:55:37,946 - Model - INFO - Best Mean Distance: 40.211522
+2025-01-10 15:55:37,946 - Model - INFO - Epoch 33 (33/200):
+2025-01-10 15:55:40,778 - Model - INFO - Train Instance Accuracy: 30.490244
+2025-01-10 15:55:41,631 - Model - INFO - Test Mean Distance: 56.241929
+2025-01-10 15:55:41,632 - Model - INFO - Best Mean Distance: 40.211522
+2025-01-10 15:55:41,632 - Model - INFO - Epoch 34 (34/200):
+2025-01-10 15:55:44,469 - Model - INFO - Train Instance Accuracy: 30.776937
+2025-01-10 15:55:45,270 - Model - INFO - Test Mean Distance: 43.141291
+2025-01-10 15:55:45,270 - Model - INFO - Best Mean Distance: 40.211522
+2025-01-10 15:55:45,270 - Model - INFO - Epoch 35 (35/200):
+2025-01-10 15:55:48,095 - Model - INFO - Train Instance Accuracy: 32.009408
+2025-01-10 15:55:48,896 - Model - INFO - Test Mean Distance: 40.254959
+2025-01-10 15:55:48,896 - Model - INFO - Best Mean Distance: 40.211522
+2025-01-10 15:55:48,897 - Model - INFO - Epoch 36 (36/200):
+2025-01-10 15:55:51,692 - Model - INFO - Train Instance Accuracy: 37.841921
+2025-01-10 15:55:52,518 - Model - INFO - Test Mean Distance: 34.483866
+2025-01-10 15:55:52,518 - Model - INFO - Best Mean Distance: 34.483866
+2025-01-10 15:55:52,518 - Model - INFO - Save model...
+2025-01-10 15:55:52,518 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:55:52,551 - Model - INFO - Epoch 37 (37/200):
+2025-01-10 15:55:55,339 - Model - INFO - Train Instance Accuracy: 41.664967
+2025-01-10 15:55:56,137 - Model - INFO - Test Mean Distance: 39.829821
+2025-01-10 15:55:56,138 - Model - INFO - Best Mean Distance: 34.483866
+2025-01-10 15:55:56,138 - Model - INFO - Epoch 38 (38/200):
+2025-01-10 15:55:58,884 - Model - INFO - Train Instance Accuracy: 34.310133
+2025-01-10 15:55:59,732 - Model - INFO - Test Mean Distance: 38.950630
+2025-01-10 15:55:59,732 - Model - INFO - Best Mean Distance: 34.483866
+2025-01-10 15:55:59,732 - Model - INFO - Epoch 39 (39/200):
+2025-01-10 15:56:02,496 - Model - INFO - Train Instance Accuracy: 33.330580
+2025-01-10 15:56:03,252 - Model - INFO - Test Mean Distance: 49.331352
+2025-01-10 15:56:03,252 - Model - INFO - Best Mean Distance: 34.483866
+2025-01-10 15:56:03,252 - Model - INFO - Epoch 40 (40/200):
+2025-01-10 15:56:06,056 - Model - INFO - Train Instance Accuracy: 44.529535
+2025-01-10 15:56:06,890 - Model - INFO - Test Mean Distance: 30.429984
+2025-01-10 15:56:06,890 - Model - INFO - Best Mean Distance: 30.429984
+2025-01-10 15:56:06,891 - Model - INFO - Save model...
+2025-01-10 15:56:06,891 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:56:06,923 - Model - INFO - Epoch 41 (41/200):
+2025-01-10 15:56:09,746 - Model - INFO - Train Instance Accuracy: 33.571902
+2025-01-10 15:56:10,567 - Model - INFO - Test Mean Distance: 32.429057
+2025-01-10 15:56:10,567 - Model - INFO - Best Mean Distance: 30.429984
+2025-01-10 15:56:10,567 - Model - INFO - Epoch 42 (42/200):
+2025-01-10 15:56:13,344 - Model - INFO - Train Instance Accuracy: 36.854197
+2025-01-10 15:56:14,135 - Model - INFO - Test Mean Distance: 34.517779
+2025-01-10 15:56:14,136 - Model - INFO - Best Mean Distance: 30.429984
+2025-01-10 15:56:14,136 - Model - INFO - Epoch 43 (43/200):
+2025-01-10 15:56:16,884 - Model - INFO - Train Instance Accuracy: 28.822552
+2025-01-10 15:56:17,723 - Model - INFO - Test Mean Distance: 32.371034
+2025-01-10 15:56:17,723 - Model - INFO - Best Mean Distance: 30.429984
+2025-01-10 15:56:17,723 - Model - INFO - Epoch 44 (44/200):
+2025-01-10 15:56:20,528 - Model - INFO - Train Instance Accuracy: 33.545914
+2025-01-10 15:56:21,319 - Model - INFO - Test Mean Distance: 35.681513
+2025-01-10 15:56:21,319 - Model - INFO - Best Mean Distance: 30.429984
+2025-01-10 15:56:21,319 - Model - INFO - Epoch 45 (45/200):
+2025-01-10 15:56:24,111 - Model - INFO - Train Instance Accuracy: 27.655171
+2025-01-10 15:56:24,912 - Model - INFO - Test Mean Distance: 37.396912
+2025-01-10 15:56:24,912 - Model - INFO - Best Mean Distance: 30.429984
+2025-01-10 15:56:24,913 - Model - INFO - Epoch 46 (46/200):
+2025-01-10 15:56:27,717 - Model - INFO - Train Instance Accuracy: 26.105366
+2025-01-10 15:56:28,487 - Model - INFO - Test Mean Distance: 35.253381
+2025-01-10 15:56:28,487 - Model - INFO - Best Mean Distance: 30.429984
+2025-01-10 15:56:28,487 - Model - INFO - Epoch 47 (47/200):
+2025-01-10 15:56:31,289 - Model - INFO - Train Instance Accuracy: 35.686689
+2025-01-10 15:56:32,125 - Model - INFO - Test Mean Distance: 29.831584
+2025-01-10 15:56:32,125 - Model - INFO - Best Mean Distance: 29.831584
+2025-01-10 15:56:32,125 - Model - INFO - Save model...
+2025-01-10 15:56:32,125 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:56:32,157 - Model - INFO - Epoch 48 (48/200):
+2025-01-10 15:56:34,967 - Model - INFO - Train Instance Accuracy: 28.359897
+2025-01-10 15:56:35,762 - Model - INFO - Test Mean Distance: 34.014572
+2025-01-10 15:56:35,763 - Model - INFO - Best Mean Distance: 29.831584
+2025-01-10 15:56:35,763 - Model - INFO - Epoch 49 (49/200):
+2025-01-10 15:56:38,585 - Model - INFO - Train Instance Accuracy: 27.759441
+2025-01-10 15:56:39,399 - Model - INFO - Test Mean Distance: 30.051739
+2025-01-10 15:56:39,400 - Model - INFO - Best Mean Distance: 29.831584
+2025-01-10 15:56:39,400 - Model - INFO - Epoch 50 (50/200):
+2025-01-10 15:56:42,219 - Model - INFO - Train Instance Accuracy: 25.175691
+2025-01-10 15:56:43,018 - Model - INFO - Test Mean Distance: 36.524953
+2025-01-10 15:56:43,019 - Model - INFO - Best Mean Distance: 29.831584
+2025-01-10 15:56:43,019 - Model - INFO - Epoch 51 (51/200):
+2025-01-10 15:56:45,854 - Model - INFO - Train Instance Accuracy: 27.889432
+2025-01-10 15:56:46,680 - Model - INFO - Test Mean Distance: 34.756048
+2025-01-10 15:56:46,680 - Model - INFO - Best Mean Distance: 29.831584
+2025-01-10 15:56:46,681 - Model - INFO - Epoch 52 (52/200):
+2025-01-10 15:56:49,494 - Model - INFO - Train Instance Accuracy: 23.568089
+2025-01-10 15:56:50,329 - Model - INFO - Test Mean Distance: 26.704282
+2025-01-10 15:56:50,329 - Model - INFO - Best Mean Distance: 26.704282
+2025-01-10 15:56:50,329 - Model - INFO - Save model...
+2025-01-10 15:56:50,329 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:56:50,362 - Model - INFO - Epoch 53 (53/200):
+2025-01-10 15:56:53,253 - Model - INFO - Train Instance Accuracy: 24.667813
+2025-01-10 15:56:54,070 - Model - INFO - Test Mean Distance: 27.803296
+2025-01-10 15:56:54,070 - Model - INFO - Best Mean Distance: 26.704282
+2025-01-10 15:56:54,070 - Model - INFO - Epoch 54 (54/200):
+2025-01-10 15:56:56,873 - Model - INFO - Train Instance Accuracy: 33.493398
+2025-01-10 15:56:57,661 - Model - INFO - Test Mean Distance: 27.095440
+2025-01-10 15:56:57,661 - Model - INFO - Best Mean Distance: 26.704282
+2025-01-10 15:56:57,662 - Model - INFO - Epoch 55 (55/200):
+2025-01-10 15:57:00,462 - Model - INFO - Train Instance Accuracy: 24.177365
+2025-01-10 15:57:01,319 - Model - INFO - Test Mean Distance: 33.694804
+2025-01-10 15:57:01,319 - Model - INFO - Best Mean Distance: 26.704282
+2025-01-10 15:57:01,319 - Model - INFO - Epoch 56 (56/200):
+2025-01-10 15:57:04,054 - Model - INFO - Train Instance Accuracy: 23.289226
+2025-01-10 15:57:04,862 - Model - INFO - Test Mean Distance: 32.351635
+2025-01-10 15:57:04,862 - Model - INFO - Best Mean Distance: 26.704282
+2025-01-10 15:57:04,862 - Model - INFO - Epoch 57 (57/200):
+2025-01-10 15:57:07,712 - Model - INFO - Train Instance Accuracy: 26.687046
+2025-01-10 15:57:08,533 - Model - INFO - Test Mean Distance: 28.748735
+2025-01-10 15:57:08,533 - Model - INFO - Best Mean Distance: 26.704282
+2025-01-10 15:57:08,533 - Model - INFO - Epoch 58 (58/200):
+2025-01-10 15:57:11,336 - Model - INFO - Train Instance Accuracy: 22.101777
+2025-01-10 15:57:12,121 - Model - INFO - Test Mean Distance: 27.104019
+2025-01-10 15:57:12,121 - Model - INFO - Best Mean Distance: 26.704282
+2025-01-10 15:57:12,121 - Model - INFO - Epoch 59 (59/200):
+2025-01-10 15:57:14,916 - Model - INFO - Train Instance Accuracy: 29.064315
+2025-01-10 15:57:15,764 - Model - INFO - Test Mean Distance: 28.020130
+2025-01-10 15:57:15,764 - Model - INFO - Best Mean Distance: 26.704282
+2025-01-10 15:57:15,764 - Model - INFO - Epoch 60 (60/200):
+2025-01-10 15:57:18,597 - Model - INFO - Train Instance Accuracy: 20.061101
+2025-01-10 15:57:19,364 - Model - INFO - Test Mean Distance: 25.475764
+2025-01-10 15:57:19,364 - Model - INFO - Best Mean Distance: 25.475764
+2025-01-10 15:57:19,364 - Model - INFO - Save model...
+2025-01-10 15:57:19,364 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:57:19,398 - Model - INFO - Epoch 61 (61/200):
+2025-01-10 15:57:22,196 - Model - INFO - Train Instance Accuracy: 35.463058
+2025-01-10 15:57:23,009 - Model - INFO - Test Mean Distance: 22.449122
+2025-01-10 15:57:23,009 - Model - INFO - Best Mean Distance: 22.449122
+2025-01-10 15:57:23,009 - Model - INFO - Save model...
+2025-01-10 15:57:23,009 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:57:23,043 - Model - INFO - Epoch 62 (62/200):
+2025-01-10 15:57:25,825 - Model - INFO - Train Instance Accuracy: 35.064577
+2025-01-10 15:57:26,667 - Model - INFO - Test Mean Distance: 24.582444
+2025-01-10 15:57:26,668 - Model - INFO - Best Mean Distance: 22.449122
+2025-01-10 15:57:26,668 - Model - INFO - Epoch 63 (63/200):
+2025-01-10 15:57:29,414 - Model - INFO - Train Instance Accuracy: 25.062278
+2025-01-10 15:57:30,273 - Model - INFO - Test Mean Distance: 23.804680
+2025-01-10 15:57:30,274 - Model - INFO - Best Mean Distance: 22.449122
+2025-01-10 15:57:30,274 - Model - INFO - Epoch 64 (64/200):
+2025-01-10 15:57:33,108 - Model - INFO - Train Instance Accuracy: 34.733566
+2025-01-10 15:57:33,910 - Model - INFO - Test Mean Distance: 19.893860
+2025-01-10 15:57:33,910 - Model - INFO - Best Mean Distance: 19.893860
+2025-01-10 15:57:33,910 - Model - INFO - Save model...
+2025-01-10 15:57:33,911 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:57:33,943 - Model - INFO - Epoch 65 (65/200):
+2025-01-10 15:57:36,788 - Model - INFO - Train Instance Accuracy: 26.076066
+2025-01-10 15:57:37,579 - Model - INFO - Test Mean Distance: 23.907800
+2025-01-10 15:57:37,579 - Model - INFO - Best Mean Distance: 19.893860
+2025-01-10 15:57:37,579 - Model - INFO - Epoch 66 (66/200):
+2025-01-10 15:57:40,365 - Model - INFO - Train Instance Accuracy: 27.731851
+2025-01-10 15:57:41,196 - Model - INFO - Test Mean Distance: 27.110362
+2025-01-10 15:57:41,196 - Model - INFO - Best Mean Distance: 19.893860
+2025-01-10 15:57:41,196 - Model - INFO - Epoch 67 (67/200):
+2025-01-10 15:57:44,024 - Model - INFO - Train Instance Accuracy: 22.013798
+2025-01-10 15:57:44,816 - Model - INFO - Test Mean Distance: 32.445937
+2025-01-10 15:57:44,816 - Model - INFO - Best Mean Distance: 19.893860
+2025-01-10 15:57:44,816 - Model - INFO - Epoch 68 (68/200):
+2025-01-10 15:57:47,648 - Model - INFO - Train Instance Accuracy: 17.492025
+2025-01-10 15:57:48,498 - Model - INFO - Test Mean Distance: 23.286132
+2025-01-10 15:57:48,499 - Model - INFO - Best Mean Distance: 19.893860
+2025-01-10 15:57:48,499 - Model - INFO - Epoch 69 (69/200):
+2025-01-10 15:57:51,361 - Model - INFO - Train Instance Accuracy: 22.210967
+2025-01-10 15:57:52,176 - Model - INFO - Test Mean Distance: 22.227404
+2025-01-10 15:57:52,176 - Model - INFO - Best Mean Distance: 19.893860
+2025-01-10 15:57:52,176 - Model - INFO - Epoch 70 (70/200):
+2025-01-10 15:57:55,020 - Model - INFO - Train Instance Accuracy: 17.523201
+2025-01-10 15:57:55,818 - Model - INFO - Test Mean Distance: 21.260059
+2025-01-10 15:57:55,818 - Model - INFO - Best Mean Distance: 19.893860
+2025-01-10 15:57:55,818 - Model - INFO - Epoch 71 (71/200):
+2025-01-10 15:57:58,604 - Model - INFO - Train Instance Accuracy: 28.080380
+2025-01-10 15:57:59,388 - Model - INFO - Test Mean Distance: 19.463024
+2025-01-10 15:57:59,388 - Model - INFO - Best Mean Distance: 19.463024
+2025-01-10 15:57:59,388 - Model - INFO - Save model...
+2025-01-10 15:57:59,388 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:57:59,421 - Model - INFO - Epoch 72 (72/200):
+2025-01-10 15:58:02,214 - Model - INFO - Train Instance Accuracy: 22.062739
+2025-01-10 15:58:03,029 - Model - INFO - Test Mean Distance: 23.595051
+2025-01-10 15:58:03,029 - Model - INFO - Best Mean Distance: 19.463024
+2025-01-10 15:58:03,029 - Model - INFO - Epoch 73 (73/200):
+2025-01-10 15:58:05,815 - Model - INFO - Train Instance Accuracy: 22.057019
+2025-01-10 15:58:06,632 - Model - INFO - Test Mean Distance: 21.964624
+2025-01-10 15:58:06,632 - Model - INFO - Best Mean Distance: 19.463024
+2025-01-10 15:58:06,633 - Model - INFO - Epoch 74 (74/200):
+2025-01-10 15:58:09,454 - Model - INFO - Train Instance Accuracy: 24.451677
+2025-01-10 15:58:10,268 - Model - INFO - Test Mean Distance: 27.645694
+2025-01-10 15:58:10,268 - Model - INFO - Best Mean Distance: 19.463024
+2025-01-10 15:58:10,268 - Model - INFO - Epoch 75 (75/200):
+2025-01-10 15:58:13,114 - Model - INFO - Train Instance Accuracy: 31.612583
+2025-01-10 15:58:13,955 - Model - INFO - Test Mean Distance: 23.199266
+2025-01-10 15:58:13,956 - Model - INFO - Best Mean Distance: 19.463024
+2025-01-10 15:58:13,956 - Model - INFO - Epoch 76 (76/200):
+2025-01-10 15:58:16,752 - Model - INFO - Train Instance Accuracy: 20.583808
+2025-01-10 15:58:17,571 - Model - INFO - Test Mean Distance: 34.244913
+2025-01-10 15:58:17,571 - Model - INFO - Best Mean Distance: 19.463024
+2025-01-10 15:58:17,571 - Model - INFO - Epoch 77 (77/200):
+2025-01-10 15:58:20,373 - Model - INFO - Train Instance Accuracy: 28.899473
+2025-01-10 15:58:21,175 - Model - INFO - Test Mean Distance: 21.239992
+2025-01-10 15:58:21,175 - Model - INFO - Best Mean Distance: 19.463024
+2025-01-10 15:58:21,175 - Model - INFO - Epoch 78 (78/200):
+2025-01-10 15:58:23,998 - Model - INFO - Train Instance Accuracy: 25.007400
+2025-01-10 15:58:24,816 - Model - INFO - Test Mean Distance: 21.432503
+2025-01-10 15:58:24,816 - Model - INFO - Best Mean Distance: 19.463024
+2025-01-10 15:58:24,817 - Model - INFO - Epoch 79 (79/200):
+2025-01-10 15:58:27,631 - Model - INFO - Train Instance Accuracy: 23.256643
+2025-01-10 15:58:28,421 - Model - INFO - Test Mean Distance: 19.147664
+2025-01-10 15:58:28,421 - Model - INFO - Best Mean Distance: 19.147664
+2025-01-10 15:58:28,421 - Model - INFO - Save model...
+2025-01-10 15:58:28,421 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:58:28,454 - Model - INFO - Epoch 80 (80/200):
+2025-01-10 15:58:31,308 - Model - INFO - Train Instance Accuracy: 22.869812
+2025-01-10 15:58:32,131 - Model - INFO - Test Mean Distance: 22.646962
+2025-01-10 15:58:32,132 - Model - INFO - Best Mean Distance: 19.147664
+2025-01-10 15:58:32,132 - Model - INFO - Epoch 81 (81/200):
+2025-01-10 15:58:34,968 - Model - INFO - Train Instance Accuracy: 26.194720
+2025-01-10 15:58:35,774 - Model - INFO - Test Mean Distance: 22.012002
+2025-01-10 15:58:35,774 - Model - INFO - Best Mean Distance: 19.147664
+2025-01-10 15:58:35,775 - Model - INFO - Epoch 82 (82/200):
+2025-01-10 15:58:38,585 - Model - INFO - Train Instance Accuracy: 25.932164
+2025-01-10 15:58:39,397 - Model - INFO - Test Mean Distance: 22.937571
+2025-01-10 15:58:39,398 - Model - INFO - Best Mean Distance: 19.147664
+2025-01-10 15:58:39,398 - Model - INFO - Epoch 83 (83/200):
+2025-01-10 15:58:42,248 - Model - INFO - Train Instance Accuracy: 29.761156
+2025-01-10 15:58:43,061 - Model - INFO - Test Mean Distance: 21.454187
+2025-01-10 15:58:43,062 - Model - INFO - Best Mean Distance: 19.147664
+2025-01-10 15:58:43,062 - Model - INFO - Epoch 84 (84/200):
+2025-01-10 15:58:45,948 - Model - INFO - Train Instance Accuracy: 17.488213
+2025-01-10 15:58:46,774 - Model - INFO - Test Mean Distance: 19.986404
+2025-01-10 15:58:46,774 - Model - INFO - Best Mean Distance: 19.147664
+2025-01-10 15:58:46,774 - Model - INFO - Epoch 85 (85/200):
+2025-01-10 15:58:49,576 - Model - INFO - Train Instance Accuracy: 21.349563
+2025-01-10 15:58:50,404 - Model - INFO - Test Mean Distance: 18.054808
+2025-01-10 15:58:50,405 - Model - INFO - Best Mean Distance: 18.054808
+2025-01-10 15:58:50,405 - Model - INFO - Save model...
+2025-01-10 15:58:50,405 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:58:50,437 - Model - INFO - Epoch 86 (86/200):
+2025-01-10 15:58:53,324 - Model - INFO - Train Instance Accuracy: 21.874213
+2025-01-10 15:58:54,124 - Model - INFO - Test Mean Distance: 19.074710
+2025-01-10 15:58:54,124 - Model - INFO - Best Mean Distance: 18.054808
+2025-01-10 15:58:54,125 - Model - INFO - Epoch 87 (87/200):
+2025-01-10 15:58:56,924 - Model - INFO - Train Instance Accuracy: 20.537638
+2025-01-10 15:58:57,794 - Model - INFO - Test Mean Distance: 21.226092
+2025-01-10 15:58:57,794 - Model - INFO - Best Mean Distance: 18.054808
+2025-01-10 15:58:57,794 - Model - INFO - Epoch 88 (88/200):
+2025-01-10 15:59:00,644 - Model - INFO - Train Instance Accuracy: 16.180951
+2025-01-10 15:59:01,445 - Model - INFO - Test Mean Distance: 25.114525
+2025-01-10 15:59:01,445 - Model - INFO - Best Mean Distance: 18.054808
+2025-01-10 15:59:01,445 - Model - INFO - Epoch 89 (89/200):
+2025-01-10 15:59:04,230 - Model - INFO - Train Instance Accuracy: 21.473062
+2025-01-10 15:59:05,107 - Model - INFO - Test Mean Distance: 21.388227
+2025-01-10 15:59:05,107 - Model - INFO - Best Mean Distance: 18.054808
+2025-01-10 15:59:05,107 - Model - INFO - Epoch 90 (90/200):
+2025-01-10 15:59:07,905 - Model - INFO - Train Instance Accuracy: 19.937917
+2025-01-10 15:59:08,740 - Model - INFO - Test Mean Distance: 18.790834
+2025-01-10 15:59:08,741 - Model - INFO - Best Mean Distance: 18.054808
+2025-01-10 15:59:08,741 - Model - INFO - Epoch 91 (91/200):
+2025-01-10 15:59:11,563 - Model - INFO - Train Instance Accuracy: 21.259506
+2025-01-10 15:59:12,365 - Model - INFO - Test Mean Distance: 16.184787
+2025-01-10 15:59:12,365 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:12,365 - Model - INFO - Save model...
+2025-01-10 15:59:12,365 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 15:59:12,398 - Model - INFO - Epoch 92 (92/200):
+2025-01-10 15:59:15,284 - Model - INFO - Train Instance Accuracy: 24.171825
+2025-01-10 15:59:16,110 - Model - INFO - Test Mean Distance: 18.428792
+2025-01-10 15:59:16,110 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:16,110 - Model - INFO - Epoch 93 (93/200):
+2025-01-10 15:59:18,967 - Model - INFO - Train Instance Accuracy: 18.029337
+2025-01-10 15:59:19,824 - Model - INFO - Test Mean Distance: 17.150609
+2025-01-10 15:59:19,825 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:19,825 - Model - INFO - Epoch 94 (94/200):
+2025-01-10 15:59:22,643 - Model - INFO - Train Instance Accuracy: 23.917072
+2025-01-10 15:59:23,436 - Model - INFO - Test Mean Distance: 17.364640
+2025-01-10 15:59:23,436 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:23,436 - Model - INFO - Epoch 95 (95/200):
+2025-01-10 15:59:26,160 - Model - INFO - Train Instance Accuracy: 18.628218
+2025-01-10 15:59:26,958 - Model - INFO - Test Mean Distance: 22.597583
+2025-01-10 15:59:26,958 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:26,958 - Model - INFO - Epoch 96 (96/200):
+2025-01-10 15:59:29,757 - Model - INFO - Train Instance Accuracy: 17.108357
+2025-01-10 15:59:30,574 - Model - INFO - Test Mean Distance: 19.979328
+2025-01-10 15:59:30,574 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:30,574 - Model - INFO - Epoch 97 (97/200):
+2025-01-10 15:59:33,407 - Model - INFO - Train Instance Accuracy: 25.883068
+2025-01-10 15:59:34,278 - Model - INFO - Test Mean Distance: 21.508215
+2025-01-10 15:59:34,278 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:34,278 - Model - INFO - Epoch 98 (98/200):
+2025-01-10 15:59:37,128 - Model - INFO - Train Instance Accuracy: 21.952236
+2025-01-10 15:59:37,928 - Model - INFO - Test Mean Distance: 24.541308
+2025-01-10 15:59:37,928 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:37,928 - Model - INFO - Epoch 99 (99/200):
+2025-01-10 15:59:40,742 - Model - INFO - Train Instance Accuracy: 17.246649
+2025-01-10 15:59:41,548 - Model - INFO - Test Mean Distance: 19.429382
+2025-01-10 15:59:41,548 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:41,548 - Model - INFO - Epoch 100 (100/200):
+2025-01-10 15:59:44,314 - Model - INFO - Train Instance Accuracy: 16.898175
+2025-01-10 15:59:45,141 - Model - INFO - Test Mean Distance: 23.560956
+2025-01-10 15:59:45,141 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:45,141 - Model - INFO - Epoch 101 (101/200):
+2025-01-10 15:59:47,991 - Model - INFO - Train Instance Accuracy: 18.312350
+2025-01-10 15:59:48,792 - Model - INFO - Test Mean Distance: 21.174402
+2025-01-10 15:59:48,792 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:48,792 - Model - INFO - Epoch 102 (102/200):
+2025-01-10 15:59:51,570 - Model - INFO - Train Instance Accuracy: 19.198208
+2025-01-10 15:59:52,412 - Model - INFO - Test Mean Distance: 19.611023
+2025-01-10 15:59:52,413 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:52,413 - Model - INFO - Epoch 103 (103/200):
+2025-01-10 15:59:55,279 - Model - INFO - Train Instance Accuracy: 22.208278
+2025-01-10 15:59:56,118 - Model - INFO - Test Mean Distance: 18.862867
+2025-01-10 15:59:56,118 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:56,118 - Model - INFO - Epoch 104 (104/200):
+2025-01-10 15:59:58,917 - Model - INFO - Train Instance Accuracy: 15.353488
+2025-01-10 15:59:59,746 - Model - INFO - Test Mean Distance: 20.039128
+2025-01-10 15:59:59,746 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 15:59:59,746 - Model - INFO - Epoch 105 (105/200):
+2025-01-10 16:00:02,533 - Model - INFO - Train Instance Accuracy: 24.311682
+2025-01-10 16:00:03,339 - Model - INFO - Test Mean Distance: 19.728349
+2025-01-10 16:00:03,339 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 16:00:03,339 - Model - INFO - Epoch 106 (106/200):
+2025-01-10 16:00:06,128 - Model - INFO - Train Instance Accuracy: 27.904545
+2025-01-10 16:00:06,983 - Model - INFO - Test Mean Distance: 20.188588
+2025-01-10 16:00:06,983 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 16:00:06,983 - Model - INFO - Epoch 107 (107/200):
+2025-01-10 16:00:09,780 - Model - INFO - Train Instance Accuracy: 22.946078
+2025-01-10 16:00:10,577 - Model - INFO - Test Mean Distance: 20.940103
+2025-01-10 16:00:10,577 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 16:00:10,577 - Model - INFO - Epoch 108 (108/200):
+2025-01-10 16:00:13,390 - Model - INFO - Train Instance Accuracy: 18.442408
+2025-01-10 16:00:14,238 - Model - INFO - Test Mean Distance: 18.877118
+2025-01-10 16:00:14,238 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 16:00:14,239 - Model - INFO - Epoch 109 (109/200):
+2025-01-10 16:00:17,071 - Model - INFO - Train Instance Accuracy: 17.838894
+2025-01-10 16:00:17,867 - Model - INFO - Test Mean Distance: 16.951406
+2025-01-10 16:00:17,868 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 16:00:17,868 - Model - INFO - Epoch 110 (110/200):
+2025-01-10 16:00:20,673 - Model - INFO - Train Instance Accuracy: 15.362251
+2025-01-10 16:00:21,502 - Model - INFO - Test Mean Distance: 18.380699
+2025-01-10 16:00:21,502 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 16:00:21,502 - Model - INFO - Epoch 111 (111/200):
+2025-01-10 16:00:24,352 - Model - INFO - Train Instance Accuracy: 29.096572
+2025-01-10 16:00:25,192 - Model - INFO - Test Mean Distance: 21.554462
+2025-01-10 16:00:25,192 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 16:00:25,192 - Model - INFO - Epoch 112 (112/200):
+2025-01-10 16:00:27,996 - Model - INFO - Train Instance Accuracy: 21.875222
+2025-01-10 16:00:28,798 - Model - INFO - Test Mean Distance: 20.611527
+2025-01-10 16:00:28,799 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 16:00:28,799 - Model - INFO - Epoch 113 (113/200):
+2025-01-10 16:00:31,566 - Model - INFO - Train Instance Accuracy: 24.061266
+2025-01-10 16:00:32,344 - Model - INFO - Test Mean Distance: 17.140862
+2025-01-10 16:00:32,344 - Model - INFO - Best Mean Distance: 16.184787
+2025-01-10 16:00:32,344 - Model - INFO - Epoch 114 (114/200):
+2025-01-10 16:00:35,175 - Model - INFO - Train Instance Accuracy: 29.742457
+2025-01-10 16:00:36,000 - Model - INFO - Test Mean Distance: 15.866959
+2025-01-10 16:00:36,000 - Model - INFO - Best Mean Distance: 15.866959
+2025-01-10 16:00:36,000 - Model - INFO - Save model...
+2025-01-10 16:00:36,000 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 16:00:36,033 - Model - INFO - Epoch 115 (115/200):
+2025-01-10 16:00:38,805 - Model - INFO - Train Instance Accuracy: 21.098729
+2025-01-10 16:00:39,640 - Model - INFO - Test Mean Distance: 16.559188
+2025-01-10 16:00:39,640 - Model - INFO - Best Mean Distance: 15.866959
+2025-01-10 16:00:39,641 - Model - INFO - Epoch 116 (116/200):
+2025-01-10 16:00:42,481 - Model - INFO - Train Instance Accuracy: 17.515784
+2025-01-10 16:00:43,308 - Model - INFO - Test Mean Distance: 16.754179
+2025-01-10 16:00:43,309 - Model - INFO - Best Mean Distance: 15.866959
+2025-01-10 16:00:43,309 - Model - INFO - Epoch 117 (117/200):
+2025-01-10 16:00:46,176 - Model - INFO - Train Instance Accuracy: 18.479656
+2025-01-10 16:00:46,965 - Model - INFO - Test Mean Distance: 18.083247
+2025-01-10 16:00:46,965 - Model - INFO - Best Mean Distance: 15.866959
+2025-01-10 16:00:46,965 - Model - INFO - Epoch 118 (118/200):
+2025-01-10 16:00:49,767 - Model - INFO - Train Instance Accuracy: 23.747232
+2025-01-10 16:00:50,583 - Model - INFO - Test Mean Distance: 17.638206
+2025-01-10 16:00:50,583 - Model - INFO - Best Mean Distance: 15.866959
+2025-01-10 16:00:50,583 - Model - INFO - Epoch 119 (119/200):
+2025-01-10 16:00:53,373 - Model - INFO - Train Instance Accuracy: 15.018633
+2025-01-10 16:00:54,214 - Model - INFO - Test Mean Distance: 15.706957
+2025-01-10 16:00:54,214 - Model - INFO - Best Mean Distance: 15.706957
+2025-01-10 16:00:54,215 - Model - INFO - Save model...
+2025-01-10 16:00:54,215 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 16:00:54,247 - Model - INFO - Epoch 120 (120/200):
+2025-01-10 16:00:57,059 - Model - INFO - Train Instance Accuracy: 19.489482
+2025-01-10 16:00:57,848 - Model - INFO - Test Mean Distance: 17.574095
+2025-01-10 16:00:57,848 - Model - INFO - Best Mean Distance: 15.706957
+2025-01-10 16:00:57,848 - Model - INFO - Epoch 121 (121/200):
+2025-01-10 16:01:00,659 - Model - INFO - Train Instance Accuracy: 23.588660
+2025-01-10 16:01:01,434 - Model - INFO - Test Mean Distance: 16.776072
+2025-01-10 16:01:01,434 - Model - INFO - Best Mean Distance: 15.706957
+2025-01-10 16:01:01,435 - Model - INFO - Epoch 122 (122/200):
+2025-01-10 16:01:04,160 - Model - INFO - Train Instance Accuracy: 23.300544
+2025-01-10 16:01:04,986 - Model - INFO - Test Mean Distance: 17.895922
+2025-01-10 16:01:04,986 - Model - INFO - Best Mean Distance: 15.706957
+2025-01-10 16:01:04,987 - Model - INFO - Epoch 123 (123/200):
+2025-01-10 16:01:07,781 - Model - INFO - Train Instance Accuracy: 23.767540
+2025-01-10 16:01:08,630 - Model - INFO - Test Mean Distance: 15.859955
+2025-01-10 16:01:08,630 - Model - INFO - Best Mean Distance: 15.706957
+2025-01-10 16:01:08,630 - Model - INFO - Epoch 124 (124/200):
+2025-01-10 16:01:11,441 - Model - INFO - Train Instance Accuracy: 25.128398
+2025-01-10 16:01:12,254 - Model - INFO - Test Mean Distance: 17.544630
+2025-01-10 16:01:12,254 - Model - INFO - Best Mean Distance: 15.706957
+2025-01-10 16:01:12,255 - Model - INFO - Epoch 125 (125/200):
+2025-01-10 16:01:15,035 - Model - INFO - Train Instance Accuracy: 21.051700
+2025-01-10 16:01:15,863 - Model - INFO - Test Mean Distance: 19.834624
+2025-01-10 16:01:15,863 - Model - INFO - Best Mean Distance: 15.706957
+2025-01-10 16:01:15,863 - Model - INFO - Epoch 126 (126/200):
+2025-01-10 16:01:18,627 - Model - INFO - Train Instance Accuracy: 26.041176
+2025-01-10 16:01:19,446 - Model - INFO - Test Mean Distance: 14.852635
+2025-01-10 16:01:19,446 - Model - INFO - Best Mean Distance: 14.852635
+2025-01-10 16:01:19,446 - Model - INFO - Save model...
+2025-01-10 16:01:19,446 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 16:01:19,478 - Model - INFO - Epoch 127 (127/200):
+2025-01-10 16:01:22,261 - Model - INFO - Train Instance Accuracy: 26.201650
+2025-01-10 16:01:23,129 - Model - INFO - Test Mean Distance: 16.586635
+2025-01-10 16:01:23,130 - Model - INFO - Best Mean Distance: 14.852635
+2025-01-10 16:01:23,130 - Model - INFO - Epoch 128 (128/200):
+2025-01-10 16:01:25,948 - Model - INFO - Train Instance Accuracy: 19.762460
+2025-01-10 16:01:26,778 - Model - INFO - Test Mean Distance: 17.654241
+2025-01-10 16:01:26,778 - Model - INFO - Best Mean Distance: 14.852635
+2025-01-10 16:01:26,778 - Model - INFO - Epoch 129 (129/200):
+2025-01-10 16:01:29,588 - Model - INFO - Train Instance Accuracy: 22.378480
+2025-01-10 16:01:30,372 - Model - INFO - Test Mean Distance: 17.211684
+2025-01-10 16:01:30,372 - Model - INFO - Best Mean Distance: 14.852635
+2025-01-10 16:01:30,372 - Model - INFO - Epoch 130 (130/200):
+2025-01-10 16:01:33,113 - Model - INFO - Train Instance Accuracy: 21.742281
+2025-01-10 16:01:33,935 - Model - INFO - Test Mean Distance: 16.728468
+2025-01-10 16:01:33,935 - Model - INFO - Best Mean Distance: 14.852635
+2025-01-10 16:01:33,935 - Model - INFO - Epoch 131 (131/200):
+2025-01-10 16:01:36,794 - Model - INFO - Train Instance Accuracy: 23.766536
+2025-01-10 16:01:37,607 - Model - INFO - Test Mean Distance: 17.707891
+2025-01-10 16:01:37,607 - Model - INFO - Best Mean Distance: 14.852635
+2025-01-10 16:01:37,607 - Model - INFO - Epoch 132 (132/200):
+2025-01-10 16:01:40,403 - Model - INFO - Train Instance Accuracy: 20.625444
+2025-01-10 16:01:41,172 - Model - INFO - Test Mean Distance: 16.944218
+2025-01-10 16:01:41,172 - Model - INFO - Best Mean Distance: 14.852635
+2025-01-10 16:01:41,173 - Model - INFO - Epoch 133 (133/200):
+2025-01-10 16:01:43,981 - Model - INFO - Train Instance Accuracy: 19.127917
+2025-01-10 16:01:44,795 - Model - INFO - Test Mean Distance: 18.339904
+2025-01-10 16:01:44,795 - Model - INFO - Best Mean Distance: 14.852635
+2025-01-10 16:01:44,795 - Model - INFO - Epoch 134 (134/200):
+2025-01-10 16:01:47,595 - Model - INFO - Train Instance Accuracy: 18.097606
+2025-01-10 16:01:48,398 - Model - INFO - Test Mean Distance: 18.798391
+2025-01-10 16:01:48,398 - Model - INFO - Best Mean Distance: 14.852635
+2025-01-10 16:01:48,398 - Model - INFO - Epoch 135 (135/200):
+2025-01-10 16:01:51,208 - Model - INFO - Train Instance Accuracy: 15.702217
+2025-01-10 16:01:51,979 - Model - INFO - Test Mean Distance: 15.573445
+2025-01-10 16:01:51,980 - Model - INFO - Best Mean Distance: 14.852635
+2025-01-10 16:01:51,980 - Model - INFO - Epoch 136 (136/200):
+2025-01-10 16:01:54,788 - Model - INFO - Train Instance Accuracy: 20.138505
+2025-01-10 16:01:55,612 - Model - INFO - Test Mean Distance: 15.860170
+2025-01-10 16:01:55,612 - Model - INFO - Best Mean Distance: 14.852635
+2025-01-10 16:01:55,612 - Model - INFO - Epoch 137 (137/200):
+2025-01-10 16:01:58,480 - Model - INFO - Train Instance Accuracy: 17.109219
+2025-01-10 16:01:59,284 - Model - INFO - Test Mean Distance: 15.394662
+2025-01-10 16:01:59,284 - Model - INFO - Best Mean Distance: 14.852635
+2025-01-10 16:01:59,284 - Model - INFO - Epoch 138 (138/200):
+2025-01-10 16:02:02,161 - Model - INFO - Train Instance Accuracy: 18.736761
+2025-01-10 16:02:02,966 - Model - INFO - Test Mean Distance: 13.947455
+2025-01-10 16:02:02,967 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:02,967 - Model - INFO - Save model...
+2025-01-10 16:02:02,967 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 16:02:02,999 - Model - INFO - Epoch 139 (139/200):
+2025-01-10 16:02:05,808 - Model - INFO - Train Instance Accuracy: 19.563575
+2025-01-10 16:02:06,619 - Model - INFO - Test Mean Distance: 14.641401
+2025-01-10 16:02:06,620 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:06,620 - Model - INFO - Epoch 140 (140/200):
+2025-01-10 16:02:09,435 - Model - INFO - Train Instance Accuracy: 19.382070
+2025-01-10 16:02:10,209 - Model - INFO - Test Mean Distance: 16.502075
+2025-01-10 16:02:10,209 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:10,209 - Model - INFO - Epoch 141 (141/200):
+2025-01-10 16:02:13,021 - Model - INFO - Train Instance Accuracy: 17.639903
+2025-01-10 16:02:13,784 - Model - INFO - Test Mean Distance: 15.437117
+2025-01-10 16:02:13,785 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:13,785 - Model - INFO - Epoch 142 (142/200):
+2025-01-10 16:02:16,553 - Model - INFO - Train Instance Accuracy: 23.858223
+2025-01-10 16:02:17,408 - Model - INFO - Test Mean Distance: 14.061625
+2025-01-10 16:02:17,408 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:17,408 - Model - INFO - Epoch 143 (143/200):
+2025-01-10 16:02:20,197 - Model - INFO - Train Instance Accuracy: 15.462344
+2025-01-10 16:02:21,036 - Model - INFO - Test Mean Distance: 16.779181
+2025-01-10 16:02:21,036 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:21,037 - Model - INFO - Epoch 144 (144/200):
+2025-01-10 16:02:23,817 - Model - INFO - Train Instance Accuracy: 21.081351
+2025-01-10 16:02:24,616 - Model - INFO - Test Mean Distance: 15.368687
+2025-01-10 16:02:24,617 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:24,617 - Model - INFO - Epoch 145 (145/200):
+2025-01-10 16:02:27,431 - Model - INFO - Train Instance Accuracy: 14.898095
+2025-01-10 16:02:28,262 - Model - INFO - Test Mean Distance: 16.947836
+2025-01-10 16:02:28,262 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:28,263 - Model - INFO - Epoch 146 (146/200):
+2025-01-10 16:02:31,007 - Model - INFO - Train Instance Accuracy: 20.394996
+2025-01-10 16:02:31,834 - Model - INFO - Test Mean Distance: 14.928416
+2025-01-10 16:02:31,834 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:31,834 - Model - INFO - Epoch 147 (147/200):
+2025-01-10 16:02:34,651 - Model - INFO - Train Instance Accuracy: 25.168210
+2025-01-10 16:02:35,475 - Model - INFO - Test Mean Distance: 14.768105
+2025-01-10 16:02:35,475 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:35,475 - Model - INFO - Epoch 148 (148/200):
+2025-01-10 16:02:38,308 - Model - INFO - Train Instance Accuracy: 16.957091
+2025-01-10 16:02:39,107 - Model - INFO - Test Mean Distance: 15.224370
+2025-01-10 16:02:39,108 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:39,108 - Model - INFO - Epoch 149 (149/200):
+2025-01-10 16:02:41,899 - Model - INFO - Train Instance Accuracy: 24.372433
+2025-01-10 16:02:42,701 - Model - INFO - Test Mean Distance: 15.646318
+2025-01-10 16:02:42,702 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:42,702 - Model - INFO - Epoch 150 (150/200):
+2025-01-10 16:02:45,486 - Model - INFO - Train Instance Accuracy: 21.368133
+2025-01-10 16:02:46,329 - Model - INFO - Test Mean Distance: 17.520288
+2025-01-10 16:02:46,329 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:46,329 - Model - INFO - Epoch 151 (151/200):
+2025-01-10 16:02:49,187 - Model - INFO - Train Instance Accuracy: 24.335002
+2025-01-10 16:02:50,015 - Model - INFO - Test Mean Distance: 16.868889
+2025-01-10 16:02:50,015 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:50,015 - Model - INFO - Epoch 152 (152/200):
+2025-01-10 16:02:52,839 - Model - INFO - Train Instance Accuracy: 18.544833
+2025-01-10 16:02:53,693 - Model - INFO - Test Mean Distance: 17.520476
+2025-01-10 16:02:53,694 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:53,694 - Model - INFO - Epoch 153 (153/200):
+2025-01-10 16:02:56,493 - Model - INFO - Train Instance Accuracy: 17.717145
+2025-01-10 16:02:57,296 - Model - INFO - Test Mean Distance: 15.599802
+2025-01-10 16:02:57,297 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:02:57,297 - Model - INFO - Epoch 154 (154/200):
+2025-01-10 16:03:00,121 - Model - INFO - Train Instance Accuracy: 17.467959
+2025-01-10 16:03:00,907 - Model - INFO - Test Mean Distance: 15.431107
+2025-01-10 16:03:00,907 - Model - INFO - Best Mean Distance: 13.947455
+2025-01-10 16:03:00,907 - Model - INFO - Epoch 155 (155/200):
+2025-01-10 16:03:03,677 - Model - INFO - Train Instance Accuracy: 18.533267
+2025-01-10 16:03:04,535 - Model - INFO - Test Mean Distance: 13.512718
+2025-01-10 16:03:04,535 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:04,535 - Model - INFO - Save model...
+2025-01-10 16:03:04,535 - Model - INFO - Saving at log/classification/2025-01-10_15-53/checkpoints/best_model.pth
+2025-01-10 16:03:04,568 - Model - INFO - Epoch 156 (156/200):
+2025-01-10 16:03:07,385 - Model - INFO - Train Instance Accuracy: 15.380357
+2025-01-10 16:03:08,185 - Model - INFO - Test Mean Distance: 15.337569
+2025-01-10 16:03:08,185 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:08,185 - Model - INFO - Epoch 157 (157/200):
+2025-01-10 16:03:11,062 - Model - INFO - Train Instance Accuracy: 17.782067
+2025-01-10 16:03:11,874 - Model - INFO - Test Mean Distance: 18.078198
+2025-01-10 16:03:11,874 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:11,874 - Model - INFO - Epoch 158 (158/200):
+2025-01-10 16:03:14,699 - Model - INFO - Train Instance Accuracy: 16.897371
+2025-01-10 16:03:15,492 - Model - INFO - Test Mean Distance: 16.556414
+2025-01-10 16:03:15,492 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:15,492 - Model - INFO - Epoch 159 (159/200):
+2025-01-10 16:03:18,285 - Model - INFO - Train Instance Accuracy: 17.251928
+2025-01-10 16:03:19,075 - Model - INFO - Test Mean Distance: 17.300415
+2025-01-10 16:03:19,075 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:19,075 - Model - INFO - Epoch 160 (160/200):
+2025-01-10 16:03:21,875 - Model - INFO - Train Instance Accuracy: 27.401802
+2025-01-10 16:03:22,638 - Model - INFO - Test Mean Distance: 18.145357
+2025-01-10 16:03:22,638 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:22,638 - Model - INFO - Epoch 161 (161/200):
+2025-01-10 16:03:25,451 - Model - INFO - Train Instance Accuracy: 17.692103
+2025-01-10 16:03:26,256 - Model - INFO - Test Mean Distance: 16.161988
+2025-01-10 16:03:26,256 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:26,256 - Model - INFO - Epoch 162 (162/200):
+2025-01-10 16:03:29,100 - Model - INFO - Train Instance Accuracy: 19.793476
+2025-01-10 16:03:29,906 - Model - INFO - Test Mean Distance: 15.527056
+2025-01-10 16:03:29,906 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:29,906 - Model - INFO - Epoch 163 (163/200):
+2025-01-10 16:03:32,751 - Model - INFO - Train Instance Accuracy: 25.785418
+2025-01-10 16:03:33,593 - Model - INFO - Test Mean Distance: 14.889693
+2025-01-10 16:03:33,593 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:33,593 - Model - INFO - Epoch 164 (164/200):
+2025-01-10 16:03:36,461 - Model - INFO - Train Instance Accuracy: 21.526865
+2025-01-10 16:03:37,264 - Model - INFO - Test Mean Distance: 15.304353
+2025-01-10 16:03:37,264 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:37,264 - Model - INFO - Epoch 165 (165/200):
+2025-01-10 16:03:40,053 - Model - INFO - Train Instance Accuracy: 15.251030
+2025-01-10 16:03:40,882 - Model - INFO - Test Mean Distance: 14.497348
+2025-01-10 16:03:40,882 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:40,882 - Model - INFO - Epoch 166 (166/200):
+2025-01-10 16:03:43,747 - Model - INFO - Train Instance Accuracy: 22.697014
+2025-01-10 16:03:44,552 - Model - INFO - Test Mean Distance: 15.900967
+2025-01-10 16:03:44,552 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:44,552 - Model - INFO - Epoch 167 (167/200):
+2025-01-10 16:03:47,356 - Model - INFO - Train Instance Accuracy: 18.114472
+2025-01-10 16:03:48,200 - Model - INFO - Test Mean Distance: 17.263393
+2025-01-10 16:03:48,200 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:48,200 - Model - INFO - Epoch 168 (168/200):
+2025-01-10 16:03:51,007 - Model - INFO - Train Instance Accuracy: 15.818113
+2025-01-10 16:03:51,798 - Model - INFO - Test Mean Distance: 16.222415
+2025-01-10 16:03:51,798 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:51,798 - Model - INFO - Epoch 169 (169/200):
+2025-01-10 16:03:54,657 - Model - INFO - Train Instance Accuracy: 16.197743
+2025-01-10 16:03:55,487 - Model - INFO - Test Mean Distance: 17.193664
+2025-01-10 16:03:55,487 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:55,487 - Model - INFO - Epoch 170 (170/200):
+2025-01-10 16:03:58,278 - Model - INFO - Train Instance Accuracy: 26.695846
+2025-01-10 16:03:59,101 - Model - INFO - Test Mean Distance: 15.297606
+2025-01-10 16:03:59,101 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:03:59,101 - Model - INFO - Epoch 171 (171/200):
+2025-01-10 16:04:01,948 - Model - INFO - Train Instance Accuracy: 18.734662
+2025-01-10 16:04:02,756 - Model - INFO - Test Mean Distance: 14.783140
+2025-01-10 16:04:02,756 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:02,756 - Model - INFO - Epoch 172 (172/200):
+2025-01-10 16:04:05,561 - Model - INFO - Train Instance Accuracy: 18.471746
+2025-01-10 16:04:06,388 - Model - INFO - Test Mean Distance: 15.709362
+2025-01-10 16:04:06,388 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:06,388 - Model - INFO - Epoch 173 (173/200):
+2025-01-10 16:04:09,227 - Model - INFO - Train Instance Accuracy: 18.581342
+2025-01-10 16:04:10,028 - Model - INFO - Test Mean Distance: 16.581574
+2025-01-10 16:04:10,028 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:10,028 - Model - INFO - Epoch 174 (174/200):
+2025-01-10 16:04:12,910 - Model - INFO - Train Instance Accuracy: 21.350904
+2025-01-10 16:04:13,730 - Model - INFO - Test Mean Distance: 16.696246
+2025-01-10 16:04:13,730 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:13,730 - Model - INFO - Epoch 175 (175/200):
+2025-01-10 16:04:16,538 - Model - INFO - Train Instance Accuracy: 12.378406
+2025-01-10 16:04:17,368 - Model - INFO - Test Mean Distance: 16.521583
+2025-01-10 16:04:17,368 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:17,368 - Model - INFO - Epoch 176 (176/200):
+2025-01-10 16:04:20,158 - Model - INFO - Train Instance Accuracy: 17.433027
+2025-01-10 16:04:21,004 - Model - INFO - Test Mean Distance: 15.435605
+2025-01-10 16:04:21,005 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:21,005 - Model - INFO - Epoch 177 (177/200):
+2025-01-10 16:04:23,807 - Model - INFO - Train Instance Accuracy: 21.364318
+2025-01-10 16:04:24,633 - Model - INFO - Test Mean Distance: 17.583981
+2025-01-10 16:04:24,633 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:24,634 - Model - INFO - Epoch 178 (178/200):
+2025-01-10 16:04:27,486 - Model - INFO - Train Instance Accuracy: 22.529552
+2025-01-10 16:04:28,295 - Model - INFO - Test Mean Distance: 18.051756
+2025-01-10 16:04:28,296 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:28,296 - Model - INFO - Epoch 179 (179/200):
+2025-01-10 16:04:31,106 - Model - INFO - Train Instance Accuracy: 19.443419
+2025-01-10 16:04:31,930 - Model - INFO - Test Mean Distance: 16.388924
+2025-01-10 16:04:31,930 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:31,931 - Model - INFO - Epoch 180 (180/200):
+2025-01-10 16:04:34,767 - Model - INFO - Train Instance Accuracy: 17.001903
+2025-01-10 16:04:35,581 - Model - INFO - Test Mean Distance: 16.373730
+2025-01-10 16:04:35,581 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:35,581 - Model - INFO - Epoch 181 (181/200):
+2025-01-10 16:04:38,382 - Model - INFO - Train Instance Accuracy: 20.636614
+2025-01-10 16:04:39,242 - Model - INFO - Test Mean Distance: 15.976500
+2025-01-10 16:04:39,242 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:39,242 - Model - INFO - Epoch 182 (182/200):
+2025-01-10 16:04:42,065 - Model - INFO - Train Instance Accuracy: 18.891740
+2025-01-10 16:04:42,892 - Model - INFO - Test Mean Distance: 15.353865
+2025-01-10 16:04:42,892 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:42,892 - Model - INFO - Epoch 183 (183/200):
+2025-01-10 16:04:45,668 - Model - INFO - Train Instance Accuracy: 23.396518
+2025-01-10 16:04:46,485 - Model - INFO - Test Mean Distance: 16.184279
+2025-01-10 16:04:46,485 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:46,485 - Model - INFO - Epoch 184 (184/200):
+2025-01-10 16:04:49,337 - Model - INFO - Train Instance Accuracy: 20.181015
+2025-01-10 16:04:50,128 - Model - INFO - Test Mean Distance: 15.237119
+2025-01-10 16:04:50,129 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:50,129 - Model - INFO - Epoch 185 (185/200):
+2025-01-10 16:04:52,892 - Model - INFO - Train Instance Accuracy: 13.993377
+2025-01-10 16:04:53,717 - Model - INFO - Test Mean Distance: 15.803157
+2025-01-10 16:04:53,717 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:53,717 - Model - INFO - Epoch 186 (186/200):
+2025-01-10 16:04:56,544 - Model - INFO - Train Instance Accuracy: 21.329199
+2025-01-10 16:04:57,365 - Model - INFO - Test Mean Distance: 15.126513
+2025-01-10 16:04:57,366 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:04:57,366 - Model - INFO - Epoch 187 (187/200):
+2025-01-10 16:05:00,196 - Model - INFO - Train Instance Accuracy: 17.063593
+2025-01-10 16:05:01,038 - Model - INFO - Test Mean Distance: 14.178980
+2025-01-10 16:05:01,038 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:01,038 - Model - INFO - Epoch 188 (188/200):
+2025-01-10 16:05:03,821 - Model - INFO - Train Instance Accuracy: 13.619165
+2025-01-10 16:05:04,648 - Model - INFO - Test Mean Distance: 14.783040
+2025-01-10 16:05:04,648 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:04,648 - Model - INFO - Epoch 189 (189/200):
+2025-01-10 16:05:07,450 - Model - INFO - Train Instance Accuracy: 15.131119
+2025-01-10 16:05:08,231 - Model - INFO - Test Mean Distance: 15.979445
+2025-01-10 16:05:08,231 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:08,232 - Model - INFO - Epoch 190 (190/200):
+2025-01-10 16:05:11,055 - Model - INFO - Train Instance Accuracy: 18.397951
+2025-01-10 16:05:11,871 - Model - INFO - Test Mean Distance: 14.814851
+2025-01-10 16:05:11,871 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:11,871 - Model - INFO - Epoch 191 (191/200):
+2025-01-10 16:05:14,686 - Model - INFO - Train Instance Accuracy: 13.554030
+2025-01-10 16:05:15,520 - Model - INFO - Test Mean Distance: 15.068600
+2025-01-10 16:05:15,520 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:15,520 - Model - INFO - Epoch 192 (192/200):
+2025-01-10 16:05:18,343 - Model - INFO - Train Instance Accuracy: 15.364179
+2025-01-10 16:05:19,152 - Model - INFO - Test Mean Distance: 15.450648
+2025-01-10 16:05:19,152 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:19,152 - Model - INFO - Epoch 193 (193/200):
+2025-01-10 16:05:21,941 - Model - INFO - Train Instance Accuracy: 17.930747
+2025-01-10 16:05:22,727 - Model - INFO - Test Mean Distance: 16.682763
+2025-01-10 16:05:22,727 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:22,727 - Model - INFO - Epoch 194 (194/200):
+2025-01-10 16:05:25,446 - Model - INFO - Train Instance Accuracy: 18.394504
+2025-01-10 16:05:26,233 - Model - INFO - Test Mean Distance: 16.282888
+2025-01-10 16:05:26,233 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:26,233 - Model - INFO - Epoch 195 (195/200):
+2025-01-10 16:05:29,069 - Model - INFO - Train Instance Accuracy: 11.964072
+2025-01-10 16:05:29,872 - Model - INFO - Test Mean Distance: 15.504009
+2025-01-10 16:05:29,872 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:29,872 - Model - INFO - Epoch 196 (196/200):
+2025-01-10 16:05:32,658 - Model - INFO - Train Instance Accuracy: 17.578943
+2025-01-10 16:05:33,542 - Model - INFO - Test Mean Distance: 15.092152
+2025-01-10 16:05:33,542 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:33,542 - Model - INFO - Epoch 197 (197/200):
+2025-01-10 16:05:36,377 - Model - INFO - Train Instance Accuracy: 14.025716
+2025-01-10 16:05:37,199 - Model - INFO - Test Mean Distance: 14.248553
+2025-01-10 16:05:37,199 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:37,199 - Model - INFO - Epoch 198 (198/200):
+2025-01-10 16:05:40,022 - Model - INFO - Train Instance Accuracy: 24.496886
+2025-01-10 16:05:40,850 - Model - INFO - Test Mean Distance: 13.798828
+2025-01-10 16:05:40,851 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:40,851 - Model - INFO - Epoch 199 (199/200):
+2025-01-10 16:05:43,689 - Model - INFO - Train Instance Accuracy: 17.440402
+2025-01-10 16:05:44,492 - Model - INFO - Test Mean Distance: 15.757752
+2025-01-10 16:05:44,492 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:44,492 - Model - INFO - Epoch 200 (200/200):
+2025-01-10 16:05:47,288 - Model - INFO - Train Instance Accuracy: 16.129666
+2025-01-10 16:05:48,083 - Model - INFO - Test Mean Distance: 15.130781
+2025-01-10 16:05:48,084 - Model - INFO - Best Mean Distance: 13.512718
+2025-01-10 16:05:48,084 - Model - INFO - End of training...

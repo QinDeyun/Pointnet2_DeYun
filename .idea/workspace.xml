@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a001e2d2-1acc-47a1-b897-e9fd243aacdc" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1xcuDOK2SAO2PiLQcI3n3EZTsSc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../wjypointnet++" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunManager" selected="Python.train_cls">
+    <configuration name="ModelNetDataLoader" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Pointnet_Pointnet2_pytorch" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data_utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_utils/ModelNetDataLoader.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RandLA_seg" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Pointnet_Pointnet2_pytorch" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/RandLA_seg.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_cls" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Pointnet_Pointnet2_pytorch" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_cls.py" />
+      <option name="PARAMETERS" value="--model pointnet2_part_seg_msg  --normal  --log_dir pointnet2_part_seg_msg" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_cls" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Pointnet_Pointnet2_pytorch" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_cls.py" />
+      <option name="PARAMETERS" value="--model pointnet2_cls_ssg  --normal  --log_dir pointnet2_cls_ssg" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_cls" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Pointnet_Pointnet2_pytorch" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_cls.py" />
+      <option name="PARAMETERS" value="--model pointnet2_cls_ssg  --normal  --log_dir pointnet2_cls_ssg" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="train_semKITTI" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Pointnet_Pointnet2_pytorch" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train_semKITTI.py" />
+      <option name="PARAMETERS" value="--model pointnet2_cls_msg  --normal  --log_dir pointnet2_cls_msg" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.train_semKITTI" />
+      <item itemvalue="Python.RandLA_seg" />
+      <item itemvalue="Python.train_cls" />
+      <item itemvalue="Python.ModelNetDataLoader" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.train_cls" />
+        <item itemvalue="Python.train_cls" />
+        <item itemvalue="Python.train_cls" />
+        <item itemvalue="Python.ModelNetDataLoader" />
+        <item itemvalue="Python.train_semKITTI" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a001e2d2-1acc-47a1-b897-e9fd243aacdc" name="Default Changelist" comment="" />
+      <created>1558521160754</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1558521160754</updated>
+      <workItem from="1558521172088" duration="641000" />
+      <workItem from="1558667574772" duration="3220000" />
+      <workItem from="1558755942454" duration="4203000" />
+      <workItem from="1558775476880" duration="2456000" />
+      <workItem from="1559122800316" duration="1316000" />
+      <workItem from="1559142086288" duration="2584000" />
+      <workItem from="1559974530389" duration="1604000" />
+      <workItem from="1560495891796" duration="804000" />
+      <workItem from="1574681493204" duration="12498000" />
+      <workItem from="1574739314753" duration="50677000" />
+      <workItem from="1574952837900" duration="613000" />
+      <workItem from="1575451520709" duration="1824000" />
+      <workItem from="1575804353680" duration="965000" />
+      <workItem from="1575808450237" duration="26000" />
+      <workItem from="1575819199915" duration="1993000" />
+      <workItem from="1575873826203" duration="580000" />
+      <workItem from="1575989007279" duration="21008000" />
+      <workItem from="1576219852852" duration="10011000" />
+      <workItem from="1577092253200" duration="1425000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="118448000" />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="167" y="206" width="1092" height="834" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1632387209164">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="167" y="206" width="1092" height="834" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1632387209164" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1632388437667">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1632388437667" />
+    <state width="920" height="155" key="GridCell.Tab.0.bottom" timestamp="1632388168194">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="920" height="155" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1632388168194" />
+    <state width="920" height="155" key="GridCell.Tab.0.center" timestamp="1632388168194">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="920" height="155" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1632388168194" />
+    <state width="920" height="155" key="GridCell.Tab.0.left" timestamp="1632388168194">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="920" height="155" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1632388168194" />
+    <state width="920" height="155" key="GridCell.Tab.0.right" timestamp="1632388168194">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="920" height="155" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1632388168194" />
+    <state width="949" height="348" key="GridCell.Tab.1.bottom" timestamp="1632303019504">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1632303019504" />
+    <state width="949" height="348" key="GridCell.Tab.1.center" timestamp="1632303019504">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1632303019504" />
+    <state width="949" height="348" key="GridCell.Tab.1.left" timestamp="1632303019504">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1632303019504" />
+    <state width="949" height="348" key="GridCell.Tab.1.right" timestamp="1632303019504">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="949" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1632303019504" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1630676553454">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1630676553454" />
+    <state x="662" y="118" width="596" height="804" key="find.popup" timestamp="1632361896166">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="662" y="118" width="596" height="804" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1632361896166" />
+    <state x="0" y="250" width="672" height="678" key="search.everywhere.popup" timestamp="1631515557587">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="250" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1631515557587" />
+  </component>
+</project>
