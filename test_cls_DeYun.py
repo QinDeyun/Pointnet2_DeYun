@@ -97,7 +97,7 @@ def main(args):
     DATA_PATH = './data/Dataset_DeYun/'
     stats = ModelNetDataLoader_DeYun.get_norm_stats(DATA_PATH)
 
-    TEST_DATASET = ModelNetDataLoader(root=DATA_PATH, norm_stats=stats, npoint=args.num_point, split='test', normal_channel=args.normal)
+    TEST_DATASET = ModelNetDataLoader(root=DATA_PATH, norm_stats=stats, npoint=args.num_point, split='test', uniform=True, normal_channel=args.normal)
     testDataLoader = torch.utils.data.DataLoader(TEST_DATASET, batch_size=args.batch_size, shuffle=False, num_workers=4)
 
     '''MODEL LOADING'''

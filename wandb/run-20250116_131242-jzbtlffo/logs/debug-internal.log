@@ -1,0 +1,13 @@
+{"time":"2025-01-16T13:12:42.376150573+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2025-01-16T13:12:42.376158377+08:00","level":"INFO","msg":"created symlink","path":"/home/zezhi/QinDeyun/Pointnet2_DeYun/wandb/run-20250116_131242-jzbtlffo/logs/debug-core.log"}
+{"time":"2025-01-16T13:12:42.479475076+08:00","level":"INFO","msg":"created new stream","id":"jzbtlffo"}
+{"time":"2025-01-16T13:12:42.479490235+08:00","level":"INFO","msg":"stream: started","id":"jzbtlffo"}
+{"time":"2025-01-16T13:12:42.479505256+08:00","level":"INFO","msg":"handler: started","stream_id":"jzbtlffo"}
+{"time":"2025-01-16T13:12:42.479529276+08:00","level":"INFO","msg":"sender: started","stream_id":"jzbtlffo"}
+{"time":"2025-01-16T13:12:42.479534472+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"jzbtlffo"}
+{"time":"2025-01-16T13:12:48.015511666+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-16T13:12:49.576172537+08:00","level":"INFO","msg":"stream: closing","id":"jzbtlffo"}
+{"time":"2025-01-16T13:12:49.576209456+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-16T13:12:49.576708918+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-16T13:13:18.0667741+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}
+{"time":"2025-01-16T13:13:18.090046152+08:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/graphql\": net/http: request canceled (Client.Timeout exceeded while awaiting headers)"}

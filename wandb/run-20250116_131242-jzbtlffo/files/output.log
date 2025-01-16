@@ -1,0 +1,34 @@
+Load dataset ...
+The size of train data is 160
+The size of test data is 40
+No existing model, starting training from scratch...
+Epoch 1 (1/1000):
+  0%|                                                                                                                                                           | 0/10 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/zezhi/QinDeyun/Pointnet2_DeYun/train_cls_DeYun.py", line 272, in <module>
+    main(args)
+  File "/home/zezhi/QinDeyun/Pointnet2_DeYun/train_cls_DeYun.py", line 197, in main
+    for batch_id, data in tqdm(enumerate(trainDataLoader, 0), total=len(trainDataLoader), smoothing=0.9):
+  File "/home/zezhi/anaconda3/envs/pointnet2/lib/python3.7/site-packages/tqdm/std.py", line 1195, in __iter__
+    for obj in iterable:
+  File "/home/zezhi/anaconda3/envs/pointnet2/lib/python3.7/site-packages/torch/utils/data/dataloader.py", line 517, in __next__
+    data = self._next_data()
+  File "/home/zezhi/anaconda3/envs/pointnet2/lib/python3.7/site-packages/torch/utils/data/dataloader.py", line 1199, in _next_data
+    return self._process_data(data)
+  File "/home/zezhi/anaconda3/envs/pointnet2/lib/python3.7/site-packages/torch/utils/data/dataloader.py", line 1225, in _process_data
+    data.reraise()
+  File "/home/zezhi/anaconda3/envs/pointnet2/lib/python3.7/site-packages/torch/_utils.py", line 429, in reraise
+    raise self.exc_type(msg)
+UnboundLocalError: Caught UnboundLocalError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/zezhi/anaconda3/envs/pointnet2/lib/python3.7/site-packages/torch/utils/data/_utils/worker.py", line 202, in _worker_loop
+    data = fetcher.fetch(index)
+  File "/home/zezhi/anaconda3/envs/pointnet2/lib/python3.7/site-packages/torch/utils/data/_utils/fetch.py", line 44, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/zezhi/anaconda3/envs/pointnet2/lib/python3.7/site-packages/torch/utils/data/_utils/fetch.py", line 44, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/zezhi/QinDeyun/Pointnet2_DeYun/data_utils/ModelNetDataLoader_DeYun.py", line 146, in __getitem__
+    return self._get_item(index)
+  File "/home/zezhi/QinDeyun/Pointnet2_DeYun/data_utils/ModelNetDataLoader_DeYun.py", line 118, in _get_item
+    mask = points[:, 2] > 0.001
+UnboundLocalError: local variable 'points' referenced before assignment

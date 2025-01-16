@@ -21,6 +21,7 @@ def farthest_point_sample(point, npoint):
     Return:
         centroids: sampled pointcloud index, [npoint, D]
     """
+    
     N, D = point.shape
     xyz = point[:,:3]
     centroids = np.zeros((npoint,))
@@ -113,6 +114,20 @@ class ModelNetDataLoader(Dataset): #指定好到哪里读数据
 
             point_set = np.load(pointcloud_path).astype(np.float32) #得到点的具体信息
             if self.uniform:
+
+                mask = point_set[:, 2] > 0.001
+                point_set = point_set[mask]
+
+                indices = np.random.choice(point_set.shape[0], 10000, replace=False)
+                point_set = point_set[indices, :]
+
+                # 计算每个点到原点的距离（假设距离是三列的平方和）
+                distances = np.sqrt(np.sum(point_set[:, :3]**2, axis=1))
+
+                # 筛选出距离在0.0001和3之间的点，并且z坐标大于0.001
+                mask = (distances > 0.001) & (distances < 3)
+                point_set = point_set[mask]
+
                 point_set = farthest_point_sample(point_set, self.npoints) #最远点采样
             else:
                 point_set = point_set[0:self.npoints,:]

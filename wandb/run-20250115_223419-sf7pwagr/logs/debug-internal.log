@@ -1,0 +1,16 @@
+{"time":"2025-01-15T22:34:19.452796792+08:00","level":"INFO","msg":"using version","core version":"0.18.7"}
+{"time":"2025-01-15T22:34:19.452808315+08:00","level":"INFO","msg":"created symlink","path":"/home/zezhi/QinDeyun/Pointnet2_DeYun/wandb/run-20250115_223419-sf7pwagr/logs/debug-core.log"}
+{"time":"2025-01-15T22:34:19.555063791+08:00","level":"INFO","msg":"created new stream","id":"sf7pwagr"}
+{"time":"2025-01-15T22:34:19.555085302+08:00","level":"INFO","msg":"stream: started","id":"sf7pwagr"}
+{"time":"2025-01-15T22:34:19.555130811+08:00","level":"INFO","msg":"writer: Do: started","stream_id":"sf7pwagr"}
+{"time":"2025-01-15T22:34:19.555159768+08:00","level":"INFO","msg":"sender: started","stream_id":"sf7pwagr"}
+{"time":"2025-01-15T22:34:19.55519498+08:00","level":"INFO","msg":"handler: started","stream_id":"sf7pwagr"}
+{"time":"2025-01-15T22:34:21.342393929+08:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-15T22:51:47.88986283+08:00","level":"INFO","msg":"stream: closing","id":"sf7pwagr"}
+{"time":"2025-01-15T22:51:47.889880297+08:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-15T22:51:47.890155187+08:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-15T22:51:52.671541865+08:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-01-15T22:51:53.437794833+08:00","level":"INFO","msg":"handler: closed","stream_id":"sf7pwagr"}
+{"time":"2025-01-15T22:51:53.437823887+08:00","level":"INFO","msg":"writer: Close: closed","stream_id":"sf7pwagr"}
+{"time":"2025-01-15T22:51:53.437847812+08:00","level":"INFO","msg":"sender: closed","stream_id":"sf7pwagr"}
+{"time":"2025-01-15T22:51:53.437887764+08:00","level":"INFO","msg":"stream: closed","id":"sf7pwagr"}

@@ -1,0 +1,49 @@
+{
+  "os": "Linux-5.15.0-126-generic-x86_64-with-debian-bullseye-sid",
+  "python": "3.7.12",
+  "startedAt": "2025-01-15T14:34:19.452105Z",
+  "cuda": "11.0.207",
+  "args": [
+    "--batch_size=16",
+    "--learning_rate=0.002",
+    "--epoch=1000"
+  ],
+  "program": "/home/zezhi/QinDeyun/Pointnet2_DeYun/train_cls_DeYun.py",
+  "codePath": "train_cls_DeYun.py",
+  "git": {
+    "remote": "https://github.com/QinDeyun/Pointnet2_DeYu.git",
+    "commit": "5ab64b780b4cb93936a63294f2272f4862a1bb4a"
+  },
+  "email": "qindeyun24@gmail.com",
+  "root": "/home/zezhi/QinDeyun/Pointnet2_DeYun",
+  "host": "zezhi-ubuntu20-basement",
+  "username": "zezhi",
+  "executable": "/home/zezhi/anaconda3/envs/pointnet2/bin/python",
+  "codePathLocal": "train_cls_DeYun.py",
+  "cpu_count": 8,
+  "cpu_count_logical": 16,
+  "gpu": "NVIDIA GeForce RTX 3080 Ti",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "982820896768",
+      "used": "482384986112"
+    }
+  },
+  "memory": {
+    "total": "134896508928"
+  },
+  "cpu": {
+    "count": 8,
+    "countLogical": 16
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 3080 Ti",
+      "memoryTotal": "12884901888",
+      "cudaCores": 10240,
+      "architecture": "Ampere"
+    }
+  ],
+  "cudaVersion": "12.2"
+}
