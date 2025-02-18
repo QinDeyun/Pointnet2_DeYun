@@ -17,12 +17,12 @@ class get_model(nn.Module):
         self.sa3 = PointNetSetAbstraction(None, None, None, 640 + 3, [256, 512, 1024], True) #把所有点当做一个组，组里一共有128个点，每个点的特征数为643个
         # fc1 input:1024
         self.fc1 = nn.Linear(1024, 512)
-        self.bn1 = nn.BatchNorm1d(512)
-        self.drop1 = nn.Dropout(0.4)
+        self.bn1 = nn.BatchNorm1d(512) 
+        self.drop1 = nn.Dropout(0.1) # 原来为0.4
         # fc2 input:512
         self.fc2 = nn.Linear(512, 256)
         self.bn2 = nn.BatchNorm1d(256)
-        self.drop2 = nn.Dropout(0.5)
+        self.drop2 = nn.Dropout(0.1) # 原来为0.5
         # fc3 input:256
         self.fc3 = nn.Linear(256, 6)
 
@@ -47,7 +47,7 @@ class get_model(nn.Module):
         x = self.drop2(F.relu(self.bn2(self.fc2(x))))
         # x = self.fc3(x)
 
-        return x,l3_points
+        return x, l3_points
 
 
 class get_loss(nn.Module):

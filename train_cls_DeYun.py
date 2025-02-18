@@ -15,11 +15,13 @@ import wandb
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = BASE_DIR
-sys.path.append(os.path.join(ROOT_DIR, 'models'))
+sys.path.append(os.path.join(ROOT_DIR, 'models/Multi_Transformer_Policy/detr_deyun/models'))
 
 import torch.nn.functional as F
 
 from data_utils import ModelNetDataLoader_DeYun
+
+from models.Multi_Transformer_Policy.policy import Multi_Transformer_Policy
 
 
 """
@@ -32,7 +34,7 @@ from data_utils import ModelNetDataLoader_DeYun
 def parse_args():
     '''PARAMETERS'''
     parser = argparse.ArgumentParser('PointNet')
-    parser.add_argument('--batch_size', type=int, default=8, help='batch size in training [default: 24]')
+    parser.add_argument('--batch_size', type=int, default=4, help='batch size in training [default: 24]')
     parser.add_argument('--model', default='pointnet2_cls_msg_DeYun', help='model name [default: pointnet_cls]')
     parser.add_argument('--epoch',  default=200, type=int, help='number of epoch in training [default: 200]')
     parser.add_argument('--learning_rate', default=0.001, type=float, help='learning rate in training [default: 0.001]')
@@ -44,43 +46,23 @@ def parse_args():
     parser.add_argument('--normal', action='store_true', default=False, help='Whether to use normal information [default: False]') # 是否使用后三列的数据
     return parser.parse_args()
 
-# def test(model, loader, num_class=40):
-#     mean_correct = []
-#     class_acc = np.zeros((num_class,3))
-#     for j, data in tqdm(enumerate(loader), total=len(loader)):
-#         points, target = data
-#         target = target[:, 0]
-#         points = points.transpose(2, 1)
-#         points, target = points.cuda(), target.cuda()
-#         classifier = model.eval()
-#         pred, _ = classifier(points)
-#         pred_choice = pred.data.max(1)[1]
-#         for cat in np.unique(target.cpu()):
-#             classacc = pred_choice[target==cat].eq(target[target==cat].long().data).cpu().sum()
-#             class_acc[cat,0]+= classacc.item()/float(points[target==cat].size()[0])
-#             class_acc[cat,1]+=1
-#         correct = pred_choice.eq(target.long().data).cpu().sum()
-#         mean_correct.append(correct.item()/float(points.size()[0]))
-#     class_acc[:,2] =  class_acc[:,0]/ class_acc[:,1]
-#     class_acc = np.mean(class_acc[:,2])
-#     instance_acc = np.mean(mean_correct)
-#     return instance_acc, class_acc
-
-def test(model, loader, stats):
+def test(policy, loader, stats):
     mean_distance = []
     for j, data in tqdm(enumerate(loader), total=len(loader)):
-        points, target = data
+        point_set, image, realsense_initial_pos, label = data
 
-        # Standardize the target data
-        target[:, 0:3] = (target[:, 0:3] - stats['distance_mean']) / stats['distance_std']
-        target[:, 3:6] = (target[:, 3:6] - stats['angle_mean']) / stats['angle_std']
+        # point_set = point_set.transpose(2, 1)
+        point_set, image, realsense_initial_pos, label = point_set.cuda(), image.cuda(), realsense_initial_pos.cuda(), label.cuda()
+        policy.eval()
+        translation_hat, rotation_hat = policy(point_set, image, realsense_initial_pos, None)
 
-        points = points.transpose(2, 1)
-        points, target = points.cuda(), target.cuda()
-        classifier = model.eval()
-        pred, _ = classifier(points)
+        translation = label[:, 0:3]
+        rotation = label[:, 3:6]
+        translation_loss = F.mse_loss(translation_hat, translation)
+        rotation_loss = F.mse_loss(rotation_hat, rotation)
+        loss = translation_loss + rotation_loss
 
-        distance = F.mse_loss(pred, target)  # 均方误差
+        distance = loss
 
         mean_distance.append(distance.item())  # Append the scalar value of the distance
 
@@ -150,33 +132,52 @@ def main(args):
     testDataLoader = torch.utils.data.DataLoader(TEST_DATASET, batch_size=args.batch_size, shuffle=False, num_workers=4)
 
     '''MODEL LOADING'''
-    MODEL = importlib.import_module(args.model)
-    shutil.copy('./models/%s.py' % args.model, str(experiment_dir))
-    shutil.copy('./models/pointnet_util.py', str(experiment_dir))
+    # MODEL = importlib.import_module(args.model)
+    # shutil.copy('./models/%s.py' % args.model, str(experiment_dir))
+    # shutil.copy('./models/pointnet_util.py', str(experiment_dir))
 
-    classifier = MODEL.get_model(normal_channel=args.normal).cuda()
-    criterion = MODEL.get_loss().cuda()
+    lr_backbone = 1e-5
+    backbone = 'resnet18'
+    enc_layers = 4
+    dec_layers = 7
+    nheads = 8
+    policy_config = {'lr': 1e-4,
+                    'hidden_dim': 512,
+                    'dim_feedforward': 2048,
+                    'lr_backbone': lr_backbone,
+                    'backbone': backbone,
+                    'enc_layers': enc_layers,
+                    'dec_layers': dec_layers,
+                    'nheads': nheads,
+                    }
 
-    try:
-        checkpoint = torch.load(str(experiment_dir) + '/checkpoints/best_model.pth')
-        start_epoch = checkpoint['epoch']
-        classifier.load_state_dict(checkpoint['model_state_dict'])
-        log_string('Use pretrain model')
-    except:
-        log_string('No existing model, starting training from scratch...')
-        start_epoch = 0
+    policy = Multi_Transformer_Policy(policy_config)
+    policy.cuda()
+    optimizer = policy.configure_optimizers()
+    start_epoch = 0
+
+    # classifier = MODEL.get_model(normal_channel=args.normal).cuda()
+    # criterion = MODEL.get_loss().cuda()
+    # try:
+    #     checkpoint = torch.load(str(experiment_dir) + '/checkpoints/best_model.pth')
+    #     start_epoch = checkpoint['epoch']
+    #     classifier.load_state_dict(checkpoint['model_state_dict'])
+    #     log_string('Use pretrain model')
+    # except:
+    #     log_string('No existing model, starting training from scratch...')
+    #     start_epoch = 0
 
 
-    if args.optimizer == 'Adam':
-        optimizer = torch.optim.Adam(
-            classifier.parameters(),
-            lr=args.learning_rate,
-            betas=(0.9, 0.999),
-            eps=1e-08,
-            weight_decay=args.decay_rate
-        )
-    else:
-        optimizer = torch.optim.SGD(classifier.parameters(), lr=0.01, momentum=0.9)
+    # if args.optimizer == 'Adam':
+    #     optimizer = torch.optim.Adam(
+    #         classifier.parameters(),
+    #         lr=args.learning_rate,
+    #         betas=(0.9, 0.999),
+    #         eps=1e-08,
+    #         weight_decay=args.decay_rate
+    #     )
+    # else:
+    #     optimizer = torch.optim.SGD(classifier.parameters(), lr=0.01, momentum=0.9)
 
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=20, gamma=0.7)
     global_epoch = 0
@@ -187,7 +188,7 @@ def main(args):
 
     '''TRANING'''
     logger.info('Start training...')
-    for epoch in range(start_epoch,args.epoch):
+    for epoch in range(start_epoch, args.epoch):
         mean_distance = []
         log_string('Epoch %d (%d/%s):' % (global_epoch + 1, epoch + 1, args.epoch))
         # optimizer.step()通常用在每个mini-batch之中，而scheduler.step()通常用在epoch里面,
@@ -195,11 +196,7 @@ def main(args):
         # 只有用了optimizer.step()，模型才会更新，而scheduler.step()是对lr进行调整。
         scheduler.step()
         for batch_id, data in tqdm(enumerate(trainDataLoader, 0), total=len(trainDataLoader), smoothing=0.9):
-            points, target = data
-
-            # Standardize the target data
-            target[:, 0:3] = (target[:, 0:3] - stats['distance_mean']) / stats['distance_std']
-            target[:, 3:6] = (target[:, 3:6] - stats['angle_mean']) / stats['angle_std']
+            points, image, realsense_initial_pos, label = data
 
             points = points.data.numpy()
             points = provider.random_point_dropout(points) #进行数据增强
@@ -210,14 +207,13 @@ def main(args):
             # target = target[:, 0] # [8, 6] -> [8]
 
 
-            points = points.transpose(2, 1)
-            points, target = points.cuda(), target.cuda()
+            # points = points.transpose(2, 1)s
+            points, image, realsense_initial_pos, label = points.cuda(), image.cuda(), realsense_initial_pos.cuda(), label.cuda()
             optimizer.zero_grad()
 
-            classifier = classifier.train()
-            pred, trans_feat = classifier(points)
-            loss = criterion(pred, target, trans_feat).float() #计算损失
-            mean_distance.append(loss.item())  # Append the scalar value of the distance
+            policy.train()
+            loss_dict = policy(points, image, realsense_initial_pos, label) #计算损失
+            mean_distance.append(loss_dict['all_loss'])  # Append the scalar value of the distance
 
         ####################################################################
 
@@ -225,20 +221,22 @@ def main(args):
             # correct = pred_choice.eq(target.long().data).cpu().sum()
             # mean_correct.append(correct.item() / float(points.size()[0]))
 
-            print("loss shape", loss.shape)
-            print("loss:", loss) # loss: tensor(345.8652, device='cuda:0', grad_fn=<MseLossBackward>)
-            loss.backward() #反向传播
+            print("translation_loss", loss_dict['translation_loss'])
+            print("rotation_loss", loss_dict['rotation_loss'])
+            print("all_loss", loss_dict['all_loss'])
+
+            loss_dict['all_loss'].backward() #反向传播
             optimizer.step() #最好的测试结果
             global_step += 1
 
-        train_mean_distance = np.mean(mean_distance)
+        train_mean_distance = np.mean([dist.cpu().item() for dist in mean_distance])
         log_string('Train Instance Accuracy: %f' % train_mean_distance)
 
         # log metrics to wandb
         wandb.log({"train_mean_distance": train_mean_distance}, step=epoch + 1)
 
         with torch.no_grad():
-            test_mean_distance = test(classifier.eval(), testDataLoader, stats)
+            test_mean_distance = test(policy.eval(), testDataLoader, stats)
 
             # log metrics to wandb
             wandb.log({"test_mean_distance": test_mean_distance}, step=epoch + 1)
@@ -257,12 +255,12 @@ def main(args):
                 state = {
                     'epoch': best_epoch,
                     'instance_acc': test_mean_distance,
-                    'model_state_dict': classifier.state_dict(),
+                    'model_state_dict': policy.state_dict(),
                     'optimizer_state_dict': optimizer.state_dict(),
                 }
                 torch.save(state, savepath)
             global_epoch += 1
-
+    print("best_epoch:", best_epoch)
     logger.info('End of training...')
     # [optional] finish the wandb run, necessary in notebooks
     wandb.finish()

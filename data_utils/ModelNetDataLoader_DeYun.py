@@ -2,6 +2,8 @@ import numpy as np
 import warnings
 import os
 from torch.utils.data import Dataset
+import torchvision.transforms as transforms
+
 warnings.filterwarnings('ignore')
 
 
@@ -47,18 +49,31 @@ class ModelNetDataLoader(Dataset): #指定好到哪里读数据
         self.norm_stats = norm_stats
 
         self.pointcloud_files = []
+        self.image_files = []
+        self.realsense_pos_files = []
         self.label_files = []
         
         # Load file names
         for file_name in os.listdir(root):
             if file_name.startswith('pointcloud_') and file_name.endswith('.npy'):
                 self.pointcloud_files.append(file_name)
+
+                image_file = file_name.replace('pointcloud_', 'rgb_').replace('.npy', '.png')
+                self.image_files.append(image_file)
+
+                realsense_pos_file = file_name.replace('pointcloud_', 'realsense_initial_pos_').replace('.npy', '.txt')
+                self.realsense_pos_files.append(realsense_pos_file)
+                
                 label_file = file_name.replace('pointcloud_', 'label_').replace('.npy', '.txt')
                 self.label_files.append(label_file)
+
         
         # Sort files to ensure matching order
         self.pointcloud_files.sort()
+        self.image_files.sort()
+        self.realsense_pos_files.sort()
         self.label_files.sort()
+
 
         assert len(self.pointcloud_files) == len(self.label_files), "Mismatch between pointcloud and label files"
         assert (self.split == 'train' or self.split == 'test')
@@ -70,10 +85,16 @@ class ModelNetDataLoader(Dataset): #指定好到哪里读数据
         
         if self.split == 'train':
             self.pointcloud_files = self.pointcloud_files[:train_size]
+            self.image_files = self.image_files[:train_size]
+            self.realsense_pos_files = self.realsense_pos_files[:train_size]
             self.label_files = self.label_files[:train_size]
+
         else:
             self.pointcloud_files = self.pointcloud_files[train_size:]
+            self.image_files = self.image_files[train_size:]
+            self.realsense_pos_files = self.realsense_pos_files[train_size:]
             self.label_files = self.label_files[train_size:]
+
 
         print('The size of %s data is %d'%(split,len(self.pointcloud_files)))
 
@@ -104,13 +125,27 @@ class ModelNetDataLoader(Dataset): #指定好到哪里读数据
             point_set, label = self.cache[index]
         else:
             pointcloud_path = os.path.join(self.root, self.pointcloud_files[index])
+            image_path = os.path.join(self.root, self.image_files[index])
+            realsense_pos_path = os.path.join(self.root, self.realsense_pos_files[index])
             label_path = os.path.join(self.root, self.label_files[index])
             
-            label = np.loadtxt(label_path, delimiter=',').astype(np.float32).reshape(-1)
+            # Load image data
+            from PIL import Image
+            image = Image.open(image_path).convert('RGB')
+            image = np.array(image).astype(np.float32)
+            image = image / 255.0
+            # print(image.shape) # 在policy中进行归一化
 
+            # Load realsense_initial_pos data
+            realsense_initial_pos = np.loadtxt(realsense_pos_path, delimiter=',').astype(np.float32).reshape(-1)
+            realsense_initial_pos[0:3] = (realsense_initial_pos[0:3] - self.norm_stats['realsense_locations_mean']) / self.norm_stats['realsense_locations_std']
+            realsense_initial_pos[3:6] = (realsense_initial_pos[3:6] - self.norm_stats['realsense_rotations_mean']) / self.norm_stats['realsense_rotations_std']
+
+            # Load label data
+            label = np.loadtxt(label_path, delimiter=',').astype(np.float32).reshape(-1)
             # Standardize the label data
-            label[0:3] = (label[0:3] - self.norm_stats['distance_mean']) / self.norm_stats['distance_std']
-            label[3:6] = (label[3:6] - self.norm_stats['angle_mean']) / self.norm_stats['angle_std']
+            label[0:3] = (label[0:3] - self.norm_stats['label_distance_mean']) / self.norm_stats['label_distance_std']
+            label[3:6] = (label[3:6] - self.norm_stats['label_angle_mean']) / self.norm_stats['label_angle_std']
 
             point_set = np.load(pointcloud_path).astype(np.float32) #得到点的具体信息
             if self.uniform:
@@ -138,9 +173,9 @@ class ModelNetDataLoader(Dataset): #指定好到哪里读数据
                 point_set = point_set[:, 0:3] # 提取前三列的数据
 
             if len(self.cache) < self.cache_size:
-                self.cache[index] = (point_set, label) #把点的信息放到缓存当中
+                self.cache[index] = (point_set, image, realsense_initial_pos, label) #把点的信息放到缓存当中
 
-        return point_set, label
+        return point_set, image, realsense_initial_pos, label
 
     def __getitem__(self, index):
         return self._get_item(index)
@@ -155,22 +190,44 @@ def get_norm_stats(root):
             all_distance_labels.extend(label[0:3])  # First three numbers are distance labels
             all_angle_labels.extend(label[3:6])     # Next three numbers are angle labels
     
+    all_realsense_locations = []
+    all_realsense_rotations = []
+    for realsense_pos_file in os.listdir(root):
+        if realsense_pos_file.startswith('realsense_initial_pos_') and realsense_pos_file.endswith('.txt'):
+            realsense_pos_path = os.path.join(root, realsense_pos_file)
+            realsense_pos = np.loadtxt(realsense_pos_path, delimiter=',').astype(np.float32).reshape(-1)
+            all_realsense_locations.extend(realsense_pos[0:3])
+            all_realsense_rotations.extend(realsense_pos[3:6])
+
+
     all_distance_labels = np.array(all_distance_labels)
     all_angle_labels = np.array(all_angle_labels)
+    all_realsense_locations = np.array(all_realsense_locations)
+    all_realsense_rotations = np.array(all_realsense_rotations)
     
-    distance_mean = np.mean(all_distance_labels)
-    distance_std = np.std(all_distance_labels)
-    distance_std = np.clip(distance_std, 1e-2, np.inf)  # clipping to avoid division by zero
+    label_distance_mean = np.mean(all_distance_labels)
+    label_distance_std = np.std(all_distance_labels)
+    label_distance_std = np.clip(label_distance_std, 1e-2, np.inf)  # clipping to avoid division by zero
+    realsense_locations_mean = np.mean(all_realsense_locations)
+    realsense_locations_std = np.std(all_realsense_locations)
+    realsense_locations_std = np.clip(realsense_locations_std, 1e-2, np.inf)  # clipping to avoid division by zero
     
-    angle_mean = np.mean(all_angle_labels)
-    angle_std = np.std(all_angle_labels)
-    angle_std = np.clip(angle_std, 1e-2, np.inf)  # clipping to avoid division by zero
+    label_angle_mean = np.mean(all_angle_labels)
+    label_angle_std = np.std(all_angle_labels)
+    label_angle_std = np.clip(label_angle_std, 1e-2, np.inf)  # clipping to avoid division by zero
+    realsense_rotations_mean = np.mean(all_realsense_rotations)
+    realsense_rotations_std = np.std(all_realsense_rotations)
+    realsense_rotations_std = np.clip(realsense_rotations_std, 1e-2, np.inf)  # clipping to avoid division by zero
     
     stats = {
-        "distance_mean": distance_mean,
-        "distance_std": distance_std,
-        "angle_mean": angle_mean,
-        "angle_std": angle_std
+        "label_distance_mean": label_distance_mean,
+        "label_distance_std": label_distance_std,
+        "label_angle_mean": label_angle_mean,
+        "label_angle_std": label_angle_std,
+        "realsense_locations_mean": realsense_locations_mean,
+        "realsense_locations_std": realsense_locations_std,
+        "realsense_rotations_mean": realsense_rotations_mean,
+        "realsense_rotations_std": realsense_rotations_std,
     }
     
     return stats
@@ -179,12 +236,16 @@ def get_norm_stats(root):
 if __name__ == '__main__':
     import torch
 
-    data = ModelNetDataLoader('./data/Dataset_DeYun/', split='train', uniform=True, normal_channel=False,)
-    DataLoader = torch.utils.data.DataLoader(data, batch_size=12, shuffle=True)
-    # for point,label in DataLoader:
-    #     print(point.shape)
-    #     print(label.shape)
+    DATA_PATH = './data/Dataset_DeYun/'
+    stats = get_norm_stats(DATA_PATH)
 
-    #     print(point)
-    #     print(label)
+    data = ModelNetDataLoader('./data/Dataset_DeYun/', norm_stats=stats, npoint=1024, split='train', uniform=True, normal_channel=False,)
+    DataLoader = torch.utils.data.DataLoader(data, batch_size=12, shuffle=True)
+    for point_set, image, realsense_initial_pos, label in DataLoader:
+        # print(point.shape)
+        # print(label.shape)
+
+        # print(point)
+        # print(label)
+        print()
     print(get_norm_stats('./data/Dataset_DeYun/'))

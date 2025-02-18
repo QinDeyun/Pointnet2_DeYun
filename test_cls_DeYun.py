@@ -40,10 +40,6 @@ def test(model, loader, stats):
     for j, data in tqdm(enumerate(loader), total=len(loader)):
         points, target = data
 
-        # Standardize the target data
-        target[0:3] = (target[0:3] - stats['distance_mean']) / stats['distance_std']
-        target[3:6] = (target[3:6] - stats['angle_mean']) / stats['angle_std']
-
         points = points.transpose(2, 1)
         points, target = points.cuda(), target.cuda()
         classifier = model.eval()
