@@ -1,3 +1,7 @@
+"""
+修改DATA_PATH
+"""
+
 from data_utils.ModelNetDataLoader_DeYun import ModelNetDataLoader
 import argparse
 import numpy as np
@@ -118,7 +122,7 @@ def main(args):
 
     '''DATA LOADING'''
     log_string('Load dataset ...')
-    DATA_PATH = './data/Dataset_DeYun/'
+    DATA_PATH = './data/Dataset_DeYun/v2_object_z_rotation/'
 
     args.normal = False
 
@@ -136,19 +140,14 @@ def main(args):
     # shutil.copy('./models/%s.py' % args.model, str(experiment_dir))
     # shutil.copy('./models/pointnet_util.py', str(experiment_dir))
 
-    lr_backbone = 1e-5
-    backbone = 'resnet18'
-    enc_layers = 4
-    dec_layers = 7
-    nheads = 8
     policy_config = {'lr': 1e-4,
                     'hidden_dim': 512,
                     'dim_feedforward': 2048,
-                    'lr_backbone': lr_backbone,
-                    'backbone': backbone,
-                    'enc_layers': enc_layers,
-                    'dec_layers': dec_layers,
-                    'nheads': nheads,
+                    'lr_backbone': 1e-5,
+                    'backbone': 'resnet18',
+                    'enc_layers': 4,
+                    'dec_layers': 7,
+                    'nheads': 8,
                     }
 
     policy = Multi_Transformer_Policy(policy_config)

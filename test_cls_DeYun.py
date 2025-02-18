@@ -16,48 +16,66 @@ import torch.nn.functional as F
 
 from data_utils import ModelNetDataLoader_DeYun
 
+from models.Multi_Transformer_Policy.policy import Multi_Transformer_Policy
+
+sys.path.append(os.path.join(ROOT_DIR, 'models/Multi_Transformer_Policy/detr_deyun/models'))
+
 
 
 """
 配置参数：
---normal 
---log_dir pointnet2_cls_msg
+修改:log_dir, such as:2025-02-15_01-00
 """
 
 def parse_args():
     '''PARAMETERS'''
     parser = argparse.ArgumentParser('PointNet')
-    parser.add_argument('--batch_size', type=int, default=24, help='batch size in training')
+    parser.add_argument('--batch_size', type=int, default=8, help='batch size in training')
     parser.add_argument('--gpu', type=str, default='0', help='specify gpu device')
     parser.add_argument('--num_point', type=int, default=1024, help='Point Number [default: 1024]')
-    parser.add_argument('--log_dir', type=str, default='pointnet2_ssg_normal', help='Experiment root')
+    parser.add_argument('--log_dir', type=str, default='2025-02-17_22-14', help='Experiment root')
     parser.add_argument('--normal', action='store_true', default=False, help='Whether to use normal information [default: False]')
     return parser.parse_args()
 
-def test(model, loader, stats):
+def test(policy, loader, stats):
     mean_distance = []
     print("Stats:", stats)
     for j, data in tqdm(enumerate(loader), total=len(loader)):
-        points, target = data
+        point_set, image, realsense_initial_pos, label = data
 
-        points = points.transpose(2, 1)
-        points, target = points.cuda(), target.cuda()
-        classifier = model.eval()
-        pred, _ = classifier(points)
+        # points = points.transpose(2, 1)
+        point_set, image, realsense_initial_pos, label = point_set.cuda(), image.cuda(), realsense_initial_pos.cuda(), label.cuda()
+        policy.eval()
+        translation_hat, rotation_hat = policy(point_set, image, realsense_initial_pos, None)
 
-        distance = F.mse_loss(pred, target)  # 均方误差
+        translation = label[:, 0:3]
+        rotation = label[:, 3:6]
 
-        print("Prediction111111111111:", pred)
-        print("Target111111111111:", target)
+        translation_loss = F.mse_loss(translation_hat, translation)
+        rotation_loss = F.mse_loss(rotation_hat, rotation)
+        loss = translation_loss + rotation_loss
 
-        target[:, 0:3] = target[:, 0:3] * stats['distance_std'] + stats['distance_mean']
-        target[:, 3:6] = target[:, 3:6] * stats['angle_std'] + stats['angle_mean']
-        pred[:, 0:3] = pred[:, 0:3] * stats['distance_std'] + stats['distance_mean']
-        pred[:, 3:6] = pred[:, 3:6] * stats['angle_std'] + stats['angle_mean']
+        translation = translation * stats['label_distance_std'] + stats['label_distance_mean']
+        rotation = rotation * stats['label_angle_std'] + stats['label_angle_mean']
+        translation_hat = translation_hat * stats['label_distance_std'] + stats['label_distance_mean']
+        rotation_hat = rotation_hat * stats['label_angle_std'] + stats['label_angle_mean']
         
-        for i in range(target.shape[0]):
-            print(f"Sample {i}: Prediction: {pred[i]}, Target: {target[i]}")
+        for i in range(label.shape[0]):
+            print(f"Sample {i}:")
+            print(f"  True Translation: {translation[i].cpu().numpy()}")
+            print(f"  Predicted Translation: {translation_hat[i].cpu().numpy()}")
+            print(f"  True Rotation: {rotation[i].cpu().numpy()}")
+            print(f"  Predicted Rotation: {rotation_hat[i].cpu().numpy()}")
+            translation_distance = torch.sum(torch.abs(translation[i] - translation_hat[i]))
+            print(f"  Translation Distance: {translation_distance}")
+            rotation_distance = torch.sum(torch.abs(rotation[i] - rotation_hat[i]))
+            print(f"  Rotation Distance: {rotation_distance}")
 
+        translation_loss = F.mse_loss(translation_hat, translation)
+        rotation_loss = F.mse_loss(rotation_hat, rotation)
+        loss = translation_loss + rotation_loss
+
+        distance = loss
         mean_distance.append(distance.item())  # Append the scalar value of the distance
 
     mean_distance = np.mean(mean_distance)
@@ -90,23 +108,44 @@ def main(args):
 
     '''DATA LOADING'''
     log_string('Load dataset ...')
-    DATA_PATH = './data/Dataset_DeYun/'
+    DATA_PATH = './data/Dataset_DeYun/v2_object_z_rotation'
     stats = ModelNetDataLoader_DeYun.get_norm_stats(DATA_PATH)
 
     TEST_DATASET = ModelNetDataLoader(root=DATA_PATH, norm_stats=stats, npoint=args.num_point, split='test', uniform=True, normal_channel=args.normal)
     testDataLoader = torch.utils.data.DataLoader(TEST_DATASET, batch_size=args.batch_size, shuffle=False, num_workers=4)
 
-    '''MODEL LOADING'''
-    model_name = os.listdir(experiment_dir+'/logs')[0].split('.')[0]
-    MODEL = importlib.import_module(model_name)
+    # '''MODEL LOADING'''
+    # model_name = os.listdir(experiment_dir+'/logs')[0].split('.')[0]
+    # MODEL = importlib.import_module(model_name)
 
-    classifier = MODEL.get_model(normal_channel=args.normal).cuda()
+    # classifier = MODEL.get_model(normal_channel=args.normal).cuda()
 
-    checkpoint = torch.load(str(experiment_dir) + '/checkpoints/best_model.pth')
-    classifier.load_state_dict(checkpoint['model_state_dict'])
+    # checkpoint = torch.load(str(experiment_dir) + '/checkpoints/best_model.pth')
+    # classifier.load_state_dict(checkpoint['model_state_dict'])
+
+    policy_config = {'lr': 1e-4,
+                    'hidden_dim': 512,
+                    'dim_feedforward': 2048,
+                    'lr_backbone': 1e-5,
+                    'backbone': 'resnet18',
+                    'enc_layers': 4,
+                    'dec_layers': 7,
+                    'nheads': 8,
+                    }
+    ckpt_path = str(experiment_dir) + '/checkpoints/best_model.pth'
+    policy = Multi_Transformer_Policy(policy_config)
+    
+    state = torch.load(ckpt_path)
+    loading_status = policy.load_state_dict(state['model_state_dict'])
+    
+    print(f'Loaded: {ckpt_path}')
+    print(loading_status)
+    policy.cuda()
+    policy.eval()
+
 
     with torch.no_grad():
-        mean_distance = test(classifier.eval(), testDataLoader, stats)
+        mean_distance = test(policy.eval(), testDataLoader, stats)
         log_string('Mean Distance: %f' % (mean_distance))
 
 

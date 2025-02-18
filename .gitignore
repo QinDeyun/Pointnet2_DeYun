@@ -1,2 +1,3 @@
-/data
-/wandb
+data/*
+wandb/*
+log/*
