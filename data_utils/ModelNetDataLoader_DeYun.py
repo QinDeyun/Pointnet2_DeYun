@@ -145,9 +145,10 @@ class ModelNetDataLoader(Dataset): #指定好到哪里读数据
             # Load label data
             label = np.concatenate([np.loadtxt(label_path, delimiter=',', max_rows=1), 
                                      np.loadtxt(label_path, delimiter=',', skiprows=1)]).astype(np.float32).reshape(-1)
+            
             # Standardize the label data
             label[0:3] = (label[0:3] - self.norm_stats['label_distance_mean']) / self.norm_stats['label_distance_std']
-            label[3:7] = (label[3:7] - self.norm_stats['label_quaternion_mean']) / self.norm_stats['label_quaternion_std']
+            # label[3:7] = (label[3:7] - self.norm_stats['label_quaternion_mean']) / self.norm_stats['label_quaternion_std']
 
             point_set = np.load(pointcloud_path).astype(np.float32) #得到点的具体信息
             if self.uniform:

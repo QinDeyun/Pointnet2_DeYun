@@ -33,12 +33,23 @@ def parse_args():
     parser.add_argument('--batch_size', type=int, default=8, help='batch size in training')
     parser.add_argument('--gpu', type=str, default='0', help='specify gpu device')
     parser.add_argument('--num_point', type=int, default=1024, help='Point Number [default: 1024]')
-    parser.add_argument('--log_dir', type=str, default='2025-02-17_22-14', help='Experiment root')
+    parser.add_argument('--log_dir', type=str, default='2025-02-19_13-56', help='Experiment root')
     parser.add_argument('--normal', action='store_true', default=False, help='Whether to use normal information [default: False]')
     return parser.parse_args()
 
+def quaternion_geodesic_loss(q_true, q_pred):
+    # 输入形状: [B, 4], L2归一化四元数 (确保单位四元数)
+    q_true = torch.nn.functional.normalize(q_true, p=2, dim=-1)
+    q_pred = torch.nn.functional.normalize(q_pred, p=2, dim=-1)
+    
+    dot_product = torch.abs(torch.sum(q_true * q_pred, dim=-1))  # 取绝对值解决q和-q等价
+    theta = 2 * torch.arccos(torch.clamp(dot_product, min=-1.0, max=1.0))
+    return theta
+
 def test(policy, loader, stats):
-    mean_distance = []
+    mean_translation_loss = []
+    mean_quaternion_loss =[]
+    mean_loss = []
     print("Stats:", stats)
     for j, data in tqdm(enumerate(loader), total=len(loader)):
         point_set, image, realsense_initial_pos, label = data
@@ -49,16 +60,20 @@ def test(policy, loader, stats):
         translation_hat, rotation_hat = policy(point_set, image, realsense_initial_pos, None)
 
         translation = label[:, 0:3]
-        rotation = label[:, 3:6]
+        rotation = label[:, 3:7]
 
         translation_loss = F.mse_loss(translation_hat, translation)
-        rotation_loss = F.mse_loss(rotation_hat, rotation)
-        loss = translation_loss + rotation_loss
+        quaternion_loss = quaternion_geodesic_loss(rotation_hat, rotation).mean()
+        loss = translation_loss + quaternion_loss
+
+        mean_translation_loss.append(translation_loss.item())
+        mean_quaternion_loss.append(quaternion_loss.item())
+        mean_loss.append(loss.item())  # Append the scalar value of the distance
 
         translation = translation * stats['label_distance_std'] + stats['label_distance_mean']
-        rotation = rotation * stats['label_angle_std'] + stats['label_angle_mean']
+        # rotation = rotation * stats['label_quaternion_std'] + stats['label_quaternion_mean']
         translation_hat = translation_hat * stats['label_distance_std'] + stats['label_distance_mean']
-        rotation_hat = rotation_hat * stats['label_angle_std'] + stats['label_angle_mean']
+        # rotation_hat = rotation_hat * stats['label_quaternion_std'] + stats['label_quaternion_mean']
         
         for i in range(label.shape[0]):
             print(f"Sample {i}:")
@@ -72,14 +87,16 @@ def test(policy, loader, stats):
             print(f"  Rotation Distance: {rotation_distance}")
 
         translation_loss = F.mse_loss(translation_hat, translation)
-        rotation_loss = F.mse_loss(rotation_hat, rotation)
-        loss = translation_loss + rotation_loss
+        quaternion_loss = quaternion_geodesic_loss(rotation_hat, rotation).mean()
+        loss = translation_loss + quaternion_loss
 
-        distance = loss
-        mean_distance.append(distance.item())  # Append the scalar value of the distance
-
-    mean_distance = np.mean(mean_distance)
-    return mean_distance
+    mean_translation_loss = np.mean(mean_translation_loss)
+    mean_quaternion_loss = np.mean(mean_quaternion_loss)
+    mean_loss = np.mean(mean_loss)
+    print(f"Mean Translation Loss: {mean_translation_loss}")
+    print(f"Mean quaternion Loss: {mean_quaternion_loss}")
+    print(f"mean_loss: {mean_loss}")
+    return mean_loss
 
 
 def main(args):
@@ -137,6 +154,7 @@ def main(args):
     
     state = torch.load(ckpt_path)
     loading_status = policy.load_state_dict(state['model_state_dict'])
+    print('best_epoch', state['epoch'])
     
     print(f'Loaded: {ckpt_path}')
     print(loading_status)
