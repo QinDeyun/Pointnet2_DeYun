@@ -54,7 +54,8 @@ class DETRVAE(nn.Module):
 
         # encoder extra parameters
         self.cls_embed = nn.Embedding(1, hidden_dim)  # extra cls token embedding
-        self.latent_proj = nn.Linear(hidden_dim, 6)  # 输出平移和旋转
+        self.output_trans = nn.Linear(hidden_dim, 3)  # 输出平移
+        self.output_quat = nn.Linear(hidden_dim, 4)  # 输出旋转（四元数）
         self.register_buffer('pos_table', get_sinusoid_encoding_table(1+1+920+1, hidden_dim))  # [CLS], qpos, a_seq ， 不会更新
         self.encoder_pointcloud_proj = nn.Linear(256, hidden_dim) # project pointcloud to embedding
 
@@ -110,11 +111,11 @@ class DETRVAE(nn.Module):
         encoder_output = encoder_output[0]  # take cls output only
         print('encoder_output:', encoder_output.shape) # torch.Size([2, 512])
 
-        latent_info = self.latent_proj(encoder_output)
-        translation = latent_info[:, :3]
-        rotation = latent_info[:, 3:]
+        translation = self.output_trans(encoder_output)
+        quaternion = self.output_quat(encoder_output)
+        q_normalized = torch.nn.functional.normalize(quaternion, p=2, dim=-1)  # L2归一化
 
-        return translation, rotation
+        return translation, q_normalized
 
 
 class ResidualBlock(nn.Module):
@@ -147,7 +148,7 @@ class MLP(nn.Module):
     def __init__(self):
         super().__init__()
         self.layers = nn.Sequential(
-            ResidualBlock(6, 8),
+            ResidualBlock(7, 8),
             ResidualBlock(8, 32),
             ResidualBlock(32, 128),
             ResidualBlock(128, 512)

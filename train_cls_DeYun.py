@@ -27,7 +27,6 @@ from data_utils import ModelNetDataLoader_DeYun
 
 from models.Multi_Transformer_Policy.policy import Multi_Transformer_Policy
 
-
 """
 需要配置的参数：
 --model pointnet2_cls_msg 
@@ -50,28 +49,41 @@ def parse_args():
     parser.add_argument('--normal', action='store_true', default=False, help='Whether to use normal information [default: False]') # 是否使用后三列的数据
     return parser.parse_args()
 
+def quaternion_geodesic_loss(q_true, q_pred):
+    # 输入形状: [B, 4], L2归一化四元数 (确保单位四元数)
+    q_true = torch.nn.functional.normalize(q_true, p=2, dim=-1)
+    q_pred = torch.nn.functional.normalize(q_pred, p=2, dim=-1)
+    
+    dot_product = torch.abs(torch.sum(q_true * q_pred, dim=-1))  # 取绝对值解决q和-q等价
+    theta = 2 * torch.arccos(torch.clamp(dot_product, min=-1.0, max=1.0))
+    return theta
+
 def test(policy, loader, stats):
-    mean_distance = []
+    mean_translation_loss = []
+    mean_quaternion_loss =[]
+    mean_loss = []
     for j, data in tqdm(enumerate(loader), total=len(loader)):
         point_set, image, realsense_initial_pos, label = data
 
         # point_set = point_set.transpose(2, 1)
         point_set, image, realsense_initial_pos, label = point_set.cuda(), image.cuda(), realsense_initial_pos.cuda(), label.cuda()
         policy.eval()
-        translation_hat, rotation_hat = policy(point_set, image, realsense_initial_pos, None)
+        translation_hat, quaternion_hat = policy(point_set, image, realsense_initial_pos, None)
 
         translation = label[:, 0:3]
-        rotation = label[:, 3:6]
+        quaternion = label[:, 3:7]
         translation_loss = F.mse_loss(translation_hat, translation)
-        rotation_loss = F.mse_loss(rotation_hat, rotation)
-        loss = translation_loss + rotation_loss
+        quaternion_loss = quaternion_geodesic_loss(quaternion_hat, quaternion).mean()
+        loss = translation_loss + quaternion_loss
+        
+        mean_translation_loss.append(translation_loss.item())
+        mean_quaternion_loss.append(quaternion_loss.item())
+        mean_loss.append(loss.item())  # Append the scalar value of the distance
 
-        distance = loss
-
-        mean_distance.append(distance.item())  # Append the scalar value of the distance
-
-    mean_distance = np.mean(mean_distance)
-    return mean_distance
+    mean_translation_loss = np.mean(mean_translation_loss)
+    mean_quaternion_loss = np.mean(mean_quaternion_loss)
+    mean_loss = np.mean(mean_loss)
+    return mean_translation_loss, mean_quaternion_loss, mean_loss
 
 
 def main(args):
@@ -188,6 +200,8 @@ def main(args):
     '''TRANING'''
     logger.info('Start training...')
     for epoch in range(start_epoch, args.epoch):
+        translation_loss =[]
+        rotation_loss = []
         mean_distance = []
         log_string('Epoch %d (%d/%s):' % (global_epoch + 1, epoch + 1, args.epoch))
         # optimizer.step()通常用在每个mini-batch之中，而scheduler.step()通常用在epoch里面,
@@ -212,7 +226,11 @@ def main(args):
 
             policy.train()
             loss_dict = policy(points, image, realsense_initial_pos, label) #计算损失
+
+            translation_loss.append(loss_dict['translation_loss'])
+            rotation_loss.append(loss_dict['rotation_loss'])
             mean_distance.append(loss_dict['all_loss'])  # Append the scalar value of the distance
+
 
         ####################################################################
 
@@ -228,16 +246,22 @@ def main(args):
             optimizer.step() #最好的测试结果
             global_step += 1
 
-        train_mean_distance = np.mean([dist.cpu().item() for dist in mean_distance])
-        log_string('Train Instance Accuracy: %f' % train_mean_distance)
+        train_mean_translation_loss = np.mean([dist.cpu().item() for dist in translation_loss])
+        train_mean_rotation_loss = np.mean([dist.cpu().item() for dist in rotation_loss])
+        train_mean_all_loss = np.mean([dist.cpu().item() for dist in mean_distance])
+        log_string('Train Instance Accuracy: %f' % train_mean_all_loss)
 
         # log metrics to wandb
-        wandb.log({"train_mean_distance": train_mean_distance}, step=epoch + 1)
+        wandb.log({"train_mean_translation_loss": train_mean_translation_loss}, step=epoch + 1)
+        wandb.log({"train_mean_rotation_loss": train_mean_rotation_loss}, step=epoch + 1)
+        wandb.log({"train_mean_all_loss": train_mean_all_loss}, step=epoch + 1)
 
         with torch.no_grad():
-            test_mean_distance = test(policy.eval(), testDataLoader, stats)
+            test_mean_translation_loss, test_mean_quaternion_loss, test_mean_distance = test(policy.eval(), testDataLoader, stats)
 
             # log metrics to wandb
+            wandb.log({"test_mean_translation_loss": test_mean_translation_loss}, step=epoch + 1)
+            wandb.log({"test_mean_quaternion_loss": test_mean_quaternion_loss}, step=epoch + 1)
             wandb.log({"test_mean_distance": test_mean_distance}, step=epoch + 1)
 
             if (test_mean_distance <= best_mean_distance):

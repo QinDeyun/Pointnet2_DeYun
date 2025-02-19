@@ -137,15 +137,17 @@ class ModelNetDataLoader(Dataset): #指定好到哪里读数据
             # print(image.shape) # 在policy中进行归一化
 
             # Load realsense_initial_pos data
-            realsense_initial_pos = np.loadtxt(realsense_pos_path, delimiter=',').astype(np.float32).reshape(-1)
+            realsense_initial_pos = np.concatenate([np.loadtxt(realsense_pos_path, delimiter=',', max_rows=1), 
+                            np.loadtxt(realsense_pos_path, delimiter=',', skiprows=1)]).astype(np.float32).reshape(-1)
             realsense_initial_pos[0:3] = (realsense_initial_pos[0:3] - self.norm_stats['realsense_locations_mean']) / self.norm_stats['realsense_locations_std']
-            realsense_initial_pos[3:6] = (realsense_initial_pos[3:6] - self.norm_stats['realsense_rotations_mean']) / self.norm_stats['realsense_rotations_std']
+            realsense_initial_pos[3:7] = (realsense_initial_pos[3:7] - self.norm_stats['realsense_quaternion_mean']) / self.norm_stats['realsense_quaternion_std']
 
             # Load label data
-            label = np.loadtxt(label_path, delimiter=',').astype(np.float32).reshape(-1)
+            label = np.concatenate([np.loadtxt(label_path, delimiter=',', max_rows=1), 
+                                     np.loadtxt(label_path, delimiter=',', skiprows=1)]).astype(np.float32).reshape(-1)
             # Standardize the label data
             label[0:3] = (label[0:3] - self.norm_stats['label_distance_mean']) / self.norm_stats['label_distance_std']
-            label[3:6] = (label[3:6] - self.norm_stats['label_angle_mean']) / self.norm_stats['label_angle_std']
+            label[3:7] = (label[3:7] - self.norm_stats['label_quaternion_mean']) / self.norm_stats['label_quaternion_std']
 
             point_set = np.load(pointcloud_path).astype(np.float32) #得到点的具体信息
             if self.uniform:
@@ -182,28 +184,30 @@ class ModelNetDataLoader(Dataset): #指定好到哪里读数据
 
 def get_norm_stats(root):
     all_distance_labels = []
-    all_angle_labels = []
+    all_quaternion_labels = []
     for label_file in os.listdir(root):
         if label_file.startswith('label_') and label_file.endswith('.txt'):
             label_path = os.path.join(root, label_file)
-            label = np.loadtxt(label_path, delimiter=',').astype(np.float32).reshape(-1)
+            label = np.concatenate([np.loadtxt(label_path, delimiter=',', max_rows=1), 
+                            np.loadtxt(label_path, delimiter=',', skiprows=1)]).astype(np.float32).reshape(-1)
             all_distance_labels.extend(label[0:3])  # First three numbers are distance labels
-            all_angle_labels.extend(label[3:6])     # Next three numbers are angle labels
+            all_quaternion_labels.extend(label[3:7])     # Next four numbers are quaternion labels
     
     all_realsense_locations = []
-    all_realsense_rotations = []
+    all_realsense_quaternion = []
     for realsense_pos_file in os.listdir(root):
         if realsense_pos_file.startswith('realsense_initial_pos_') and realsense_pos_file.endswith('.txt'):
             realsense_pos_path = os.path.join(root, realsense_pos_file)
-            realsense_pos = np.loadtxt(realsense_pos_path, delimiter=',').astype(np.float32).reshape(-1)
+            realsense_pos = np.concatenate([np.loadtxt(realsense_pos_path, delimiter=',', max_rows=1), 
+                np.loadtxt(realsense_pos_path, delimiter=',', skiprows=1)]).astype(np.float32).reshape(-1)
             all_realsense_locations.extend(realsense_pos[0:3])
-            all_realsense_rotations.extend(realsense_pos[3:6])
+            all_realsense_quaternion.extend(realsense_pos[3:7])
 
 
     all_distance_labels = np.array(all_distance_labels)
-    all_angle_labels = np.array(all_angle_labels)
+    all_quaternion_labels = np.array(all_quaternion_labels)
     all_realsense_locations = np.array(all_realsense_locations)
-    all_realsense_rotations = np.array(all_realsense_rotations)
+    all_realsense_quaternion = np.array(all_realsense_quaternion)
     
     label_distance_mean = np.mean(all_distance_labels)
     label_distance_std = np.std(all_distance_labels)
@@ -212,22 +216,22 @@ def get_norm_stats(root):
     realsense_locations_std = np.std(all_realsense_locations)
     realsense_locations_std = np.clip(realsense_locations_std, 1e-2, np.inf)  # clipping to avoid division by zero
     
-    label_angle_mean = np.mean(all_angle_labels)
-    label_angle_std = np.std(all_angle_labels)
-    label_angle_std = np.clip(label_angle_std, 1e-2, np.inf)  # clipping to avoid division by zero
-    realsense_rotations_mean = np.mean(all_realsense_rotations)
-    realsense_rotations_std = np.std(all_realsense_rotations)
-    realsense_rotations_std = np.clip(realsense_rotations_std, 1e-2, np.inf)  # clipping to avoid division by zero
+    label_quaternion_mean = np.mean(all_quaternion_labels)
+    label_quaternion_std = np.std(all_quaternion_labels)
+    label_quaternion_std = np.clip(label_quaternion_std, 1e-2, np.inf)  # clipping to avoid division by zero
+    realsense_quaternion_mean = np.mean(all_realsense_quaternion)
+    realsense_quaternion_std = np.std(all_realsense_quaternion)
+    realsense_quaternion_std = np.clip(realsense_quaternion_std, 1e-2, np.inf)  # clipping to avoid division by zero
     
     stats = {
         "label_distance_mean": label_distance_mean,
         "label_distance_std": label_distance_std,
-        "label_angle_mean": label_angle_mean,
-        "label_angle_std": label_angle_std,
+        "label_quaternion_mean": label_quaternion_mean,
+        "label_quaternion_std": label_quaternion_std,
         "realsense_locations_mean": realsense_locations_mean,
         "realsense_locations_std": realsense_locations_std,
-        "realsense_rotations_mean": realsense_rotations_mean,
-        "realsense_rotations_std": realsense_rotations_std,
+        "realsense_quaternion_mean": realsense_quaternion_mean,
+        "realsense_quaternion_std": realsense_quaternion_std,
     }
     
     return stats
