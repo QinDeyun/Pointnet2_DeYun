@@ -11,7 +11,7 @@ e = IPython.embed
 
 def get_args_parser():
     parser = argparse.ArgumentParser('Set transformer detector', add_help=False)
-    parser.add_argument('--lr', default=1e-4, type=float) # will be overridden
+    parser.add_argument('--lr', default=1e-5, type=float) # will be overridden
     parser.add_argument('--lr_backbone', default=1e-5, type=float) # will be overridden
     parser.add_argument('--batch_size', default=2, type=int) # not used
     parser.add_argument('--weight_decay', default=1e-4, type=float)
@@ -78,11 +78,15 @@ def build_ACT_model_and_optimizer(args_override):  # args_override: policy confi
     model.cuda()
 
     param_dicts = [
-        {"params": [p for n, p in model.named_parameters() if "backbone" not in n and p.requires_grad]},
+        {"params": [p for n, p in model.named_parameters() if "backbone" not in n and "output_quat" not in n and p.requires_grad]},
         {
             "params": [p for n, p in model.named_parameters() if "backbone" in n and p.requires_grad],
             "lr": args.lr_backbone,
         },
+        {
+            "params": [p for n, p in model.named_parameters() if "output_quat" in n and p.requires_grad],
+            "weight_decay": 0,
+        }
     ]
     optimizer = torch.optim.AdamW(param_dicts, lr=args.lr,
                                   weight_decay=args.weight_decay)

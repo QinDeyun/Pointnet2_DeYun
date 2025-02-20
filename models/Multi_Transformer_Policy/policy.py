@@ -15,12 +15,11 @@ import torch
 e = IPython.embed
 
 def quaternion_geodesic_loss(q_true, q_pred):
-    # 输入形状: [B, 4], L2归一化四元数 (确保单位四元数)
     q_true = torch.nn.functional.normalize(q_true, p=2, dim=-1)
     q_pred = torch.nn.functional.normalize(q_pred, p=2, dim=-1)
-    
+
     dot_product = torch.abs(torch.sum(q_true * q_pred, dim=-1))  # 取绝对值解决q和-q等价
-    theta = 2 * torch.arccos(torch.clamp(dot_product, min=-1.0, max=1.0))
+    theta = 2 * torch.arccos(torch.clamp(dot_product,  min=0.0, max=1.0 - 1e-7))
     return theta
 
 class Multi_Transformer_Policy(nn.Module):

@@ -1,5 +1,4 @@
 """
-try this
 修改DATA_PATH
 """
 
@@ -51,12 +50,11 @@ def parse_args():
     return parser.parse_args()
 
 def quaternion_geodesic_loss(q_true, q_pred):
-    # 输入形状: [B, 4], L2归一化四元数 (确保单位四元数)
     q_true = torch.nn.functional.normalize(q_true, p=2, dim=-1)
     q_pred = torch.nn.functional.normalize(q_pred, p=2, dim=-1)
-    
+
     dot_product = torch.abs(torch.sum(q_true * q_pred, dim=-1))  # 取绝对值解决q和-q等价
-    theta = 2 * torch.arccos(torch.clamp(dot_product, min=-1.0, max=1.0))
+    theta = 2 * torch.arccos(torch.clamp(dot_product, min=0.0, max=1.0 - 1e-7))
     return theta
 
 def test(policy, loader, stats):
@@ -74,7 +72,7 @@ def test(policy, loader, stats):
         translation = label[:, 0:3]
         quaternion = label[:, 3:7]
         translation_loss = F.mse_loss(translation_hat, translation)
-        quaternion_loss = quaternion_geodesic_loss(quaternion_hat, quaternion).mean()
+        quaternion_loss = quaternion_geodesic_loss(quaternion, quaternion_hat).mean()
         loss = translation_loss + quaternion_loss
         
         mean_translation_loss.append(translation_loss.item())
@@ -153,7 +151,7 @@ def main(args):
     # shutil.copy('./models/%s.py' % args.model, str(experiment_dir))
     # shutil.copy('./models/pointnet_util.py', str(experiment_dir))
 
-    policy_config = {'lr': 1e-4,
+    policy_config = {'lr': 1e-5,
                     'hidden_dim': 512,
                     'dim_feedforward': 2048,
                     'lr_backbone': 1e-5,

@@ -140,7 +140,7 @@ class ModelNetDataLoader(Dataset): #指定好到哪里读数据
             realsense_initial_pos = np.concatenate([np.loadtxt(realsense_pos_path, delimiter=',', max_rows=1), 
                             np.loadtxt(realsense_pos_path, delimiter=',', skiprows=1)]).astype(np.float32).reshape(-1)
             realsense_initial_pos[0:3] = (realsense_initial_pos[0:3] - self.norm_stats['realsense_locations_mean']) / self.norm_stats['realsense_locations_std']
-            realsense_initial_pos[3:7] = (realsense_initial_pos[3:7] - self.norm_stats['realsense_quaternion_mean']) / self.norm_stats['realsense_quaternion_std']
+            # realsense_initial_pos[3:7] = (realsense_initial_pos[3:7] - self.norm_stats['realsense_quaternion_mean']) / self.norm_stats['realsense_quaternion_std']
 
             # Load label data
             label = np.concatenate([np.loadtxt(label_path, delimiter=',', max_rows=1), 
