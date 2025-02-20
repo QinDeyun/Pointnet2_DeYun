@@ -33,14 +33,14 @@ def parse_args():
     parser.add_argument('--batch_size', type=int, default=8, help='batch size in training')
     parser.add_argument('--gpu', type=str, default='0', help='specify gpu device')
     parser.add_argument('--num_point', type=int, default=1024, help='Point Number [default: 1024]')
-    parser.add_argument('--log_dir', type=str, default='2025-02-19_18-18', help='Experiment root')
+    parser.add_argument('--log_dir', type=str, default='2025-02-20_15-02', help='Experiment root')
     parser.add_argument('--normal', action='store_true', default=False, help='Whether to use normal information [default: False]')
     return parser.parse_args()
 
 def quaternion_geodesic_loss(q_true, q_pred):
     q_true = torch.nn.functional.normalize(q_true, p=2, dim=-1)
     q_pred = torch.nn.functional.normalize(q_pred, p=2, dim=-1)
-        
+
     dot_product = torch.abs(torch.sum(q_true * q_pred, dim=-1))  # 取绝对值解决q和-q等价
     theta = 2 * torch.arccos(torch.clamp(dot_product, min=0.0, max=1.0 - 1e-7))
     return theta

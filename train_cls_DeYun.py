@@ -151,7 +151,7 @@ def main(args):
     # shutil.copy('./models/%s.py' % args.model, str(experiment_dir))
     # shutil.copy('./models/pointnet_util.py', str(experiment_dir))
 
-    policy_config = {'lr': 1e-5,
+    policy_config = {'lr': 1e-4,
                     'hidden_dim': 512,
                     'dim_feedforward': 2048,
                     'lr_backbone': 1e-5,
